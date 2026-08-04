@@ -103,7 +103,7 @@ const SPECIALTY_PROGRAMS = [
     desc: "A focused programme for athletes, runners and gym-goers dealing with sports injuries or overuse pain. Includes movement analysis, sport-specific strengthening, manual therapy and a return-to-sport plan.",
     tags: ["Assessment", "Strengthening", "Return to Sport"],
     cta: "Explore Sports Rehab",
-    img: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?q=80&w=1200&auto=format&fit=crop",
+    img: "./Assets/IMAGE_14.jpeg",
   },
   {
     label: "PROGRAMME · FOR DESK WORKERS",
@@ -112,7 +112,7 @@ const SPECIALTY_PROGRAMS = [
     desc: "Built for professionals who sit for long hours. We assess your posture and workstation, deliver targeted mobility exercises and teach you simple daily habits to eliminate neck, shoulder and back pain.",
     tags: ["Posture Correction", "Ergonomics", "Mobility"],
     cta: "Explore Desk Warrior",
-    img: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?q=80&w=1200&auto=format&fit=crop",
+    img: "./Assets/IMAGE_13.jpeg",
   },
   {
     label: "PROGRAMME · FOR SENIORS",
@@ -121,7 +121,7 @@ const SPECIALTY_PROGRAMS = [
     desc: "Gentle, evidence-based home sessions designed for older adults — focusing on improving balance, reducing fall risk, building functional strength and maintaining independence in daily activities.",
     tags: ["Balance Training", "Fall Prevention", "Strength"],
     cta: "Explore Senior Wellness",
-    img: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?q=80&w=1200&auto=format&fit=crop",
+    img: "./Assets/IMAGE_10.jpg",
   },
 ];
 
@@ -170,22 +170,22 @@ const TESTIMONIALS = [
 
 const BLOG_POSTS = [
   {
-    tag: "Back Pain",
-    title: "5 common causes of lower back pain and how physiotherapy helps",
-    text: "From poor posture to disc problems — understand what's really behind your back pain and how targeted therapy can resolve it.",
-    img: "./Assets/IMAGE_02.jpg",
-  },
-  {
     tag: "Joint Health",
     title: "Knee pain when climbing stairs? Here's what it means",
     text: "Recognising the early signs of knee degeneration and why early physiotherapy intervention makes all the difference.",
     img: "./Assets/IMAGE_03.jpg",
   },
   {
+    tag: "Back Pain",
+    title: "5 common causes of lower back pain and how physiotherapy helps",
+    text: "From poor posture to disc problems — understand what's really behind your back pain and how targeted therapy can resolve it.",
+    img: "./Assets/IMAGE_09.jpg",
+  },
+  {
     tag: "Home Recovery",
     title: "Why home physiotherapy is just as effective as clinic-based care",
     text: "Research-backed reasons why recovering in your own environment can actually speed up your return to full function.",
-    img: "./Assets/IMAGE_09.jpg",
+    img: "./Assets/IMAGE_02.jpg",
   },
 ];
 
@@ -449,7 +449,7 @@ function About() {
         <Reveal className="about-photos" as="div">
           <div className="about-photo-main">
             <img
-              src="./Assets/IMAGE_02.jpg"
+              src="./Assets/IMAGE_11.jpg"
               alt="Physiotherapist guiding a patient through a strengthening exercise at home"
             />
           </div>
@@ -771,7 +771,7 @@ function Journey() {
         </div>
         <Reveal className="journey-art" delay={150} as="div">
           <img
-            src="./Assets/IMAGE_04.jpg"
+            src="./Assets/IMAGE_12.jpg"
             alt="Physiotherapist supporting a patient's recovery at home"
           />
         </Reveal>
@@ -1586,9 +1586,10 @@ html{scroll-behavior:smooth;}
 
 /* ===== CTA BANNER ===== */
 .mw-root .cta-banner{background:linear-gradient(120deg,var(--teal-deep),var(--teal-darker));color:#fff;position:relative;overflow:hidden;padding:0;}
-.mw-root .cta-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;padding:60px 24px;position:relative;z-index:1;}
+.mw-root .cta-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:nowrap;padding:60px 24px;position:relative;z-index:1;}
 .mw-root .cta-banner h2{color:#fff;font-size:clamp(1.6rem,2.6vw,2.1rem);max-width:520px;}
 .mw-root .cta-banner p{color:#BFE0DC;margin-top:10px;font-size:.98rem;}
+.mw-root .cta-banner .btn{white-space:nowrap;flex-shrink:0;}
 
 /* ===== FOOTER ===== */
 .mw-root footer{background:#062F33;color:#B9D3D0;padding-top:70px;}
