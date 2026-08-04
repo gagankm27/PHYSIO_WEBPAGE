@@ -173,19 +173,19 @@ const BLOG_POSTS = [
     tag: "Back Pain",
     title: "5 common causes of lower back pain and how physiotherapy helps",
     text: "From poor posture to disc problems — understand what's really behind your back pain and how targeted therapy can resolve it.",
-    img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?q=80&w=800&auto=format&fit=crop",
+    img: "./Assets/IMAGE_02.jpg",
   },
   {
     tag: "Joint Health",
     title: "Knee pain when climbing stairs? Here's what it means",
     text: "Recognising the early signs of knee degeneration and why early physiotherapy intervention makes all the difference.",
-    img: "https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?q=80&w=800&auto=format&fit=crop",
+    img: "./Assets/IMAGE_03.jpg",
   },
   {
     tag: "Home Recovery",
     title: "Why home physiotherapy is just as effective as clinic-based care",
     text: "Research-backed reasons why recovering in your own environment can actually speed up your return to full function.",
-    img: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800&auto=format&fit=crop",
+    img: "./Assets/IMAGE_09.jpg",
   },
 ];
 
@@ -345,43 +345,62 @@ function Header() {
 function Hero() {
   return (
     <section className="hero" id="home">
-      <div className="container hero-grid">
-        <div className="hero-copy">
-          <span className="eyebrow">Certified Home Physiotherapy</span>
-          <h1>
-            Expert physiotherapy, <em>at your doorstep</em>
-          </h1>
-          <p className="lead">
-            Skip the clinic queue. Our qualified physiotherapist visits your home with all the
-            equipment needed for a full assessment and hands-on treatment — followed by live
-            video check-ins to keep your recovery on track.
-          </p>
-          <div className="hero-cta-row">
-            <a href="#contact" className="btn btn-coral">Book a Home Visit</a>
-            <a href="#services" className="btn btn-outline">See What We Treat</a>
-          </div>
-          <div className="rating-chip">
-            <span className="stars">★★★★★</span>
-            <span>
-              <strong>150+ patients</strong> · treated and recovered
-            </span>
-          </div>
+      {/* full-bleed background image */}
+      <div className="hero-bg">
+        <img src="./Assets/IMAGE_01.jpg" alt="Physiotherapy background" />
+        <div className="hero-overlay" />
+      </div>
+
+      {/* centred content */}
+      <div className="hero-center">
+        <div className="hero-badge-row">
+          <span className="hero-badge">🏅 BPT-Certified Physiotherapist</span>
+          <span className="hero-badge">📍 Home Visit · Bangalore</span>
         </div>
 
-        <div className="hero-art">
-          <div className="hero-photo">
-            <img
-              src="https://images.unsplash.com/photo-1645005512968-0c1fe99f0093?q=80&w=900&auto=format&fit=crop"
-              alt="Physiotherapist assisting a patient at home"
-            />
+        <h1 className="hero-headline">
+          Expert Physiotherapy,
+          <br />
+          <em>Right At Your Doorstep</em>
+        </h1>
+
+        <p className="hero-sub">
+          Skip the clinic. Our qualified physiotherapist brings hands-on assessment,
+          treatment and personalised care directly to your home — anytime, any day.
+        </p>
+
+        <div className="hero-cta-row">
+          <a href="#contact" className="btn btn-coral">Book a Home Visit</a>
+          <a href="#services" className="btn btn-hero-ghost">See What We Treat ↓</a>
+        </div>
+
+        {/* trust strip */}
+        <div className="hero-trust">
+          <div className="hero-trust-item">
+            <span className="ht-num">150+</span>
+            <span className="ht-lbl">Patients Treated</span>
           </div>
-          <div className="floating-stat">
-            <div className="num">
-              50<span>+</span>
-            </div>
-            <div className="lbl">Home visits completed</div>
+          <div className="ht-sep" />
+          <div className="hero-trust-item">
+            <span className="ht-num">★ 4.9</span>
+            <span className="ht-lbl">Average Rating</span>
+          </div>
+          <div className="ht-sep" />
+          <div className="hero-trust-item">
+            <span className="ht-num">50+</span>
+            <span className="ht-lbl">Home Visits Done</span>
+          </div>
+          <div className="ht-sep" />
+          <div className="hero-trust-item">
+            <span className="ht-num">100%</span>
+            <span className="ht-lbl">Home-Based Care</span>
           </div>
         </div>
+      </div>
+
+      {/* scroll cue */}
+      <div className="hero-scroll-cue">
+        <div className="scroll-line" />
       </div>
     </section>
   );
@@ -430,13 +449,9 @@ function About() {
         <Reveal className="about-photos" as="div">
           <div className="about-photo-main">
             <img
-              src="https://images.unsplash.com/photo-1645005513713-9e2b92a687d3?q=80&w=800&auto=format&fit=crop"
+              src="./Assets/IMAGE_02.jpg"
               alt="Physiotherapist guiding a patient through a strengthening exercise at home"
             />
-          </div>
-          <div className="about-photo-badge">
-            <div className="n">2+</div>
-            <div className="t">Years Experience</div>
           </div>
         </Reveal>
 
@@ -756,7 +771,7 @@ function Journey() {
         </div>
         <Reveal className="journey-art" delay={150} as="div">
           <img
-            src="https://images.unsplash.com/photo-1645005512827-48ff6f97848a?q=80&w=900&auto=format&fit=crop"
+            src="./Assets/IMAGE_04.jpg"
             alt="Physiotherapist supporting a patient's recovery at home"
           />
         </Reveal>
@@ -779,37 +794,37 @@ function Testimonials() {
       </div>
 
       <div className="marquee-wrapper">
-          <div className="t-grid">
-            {TESTIMONIALS.map((t, i) => (
-              <div key={t.name} className="t-card">
-                <span className="stars">★★★★★</span>
-                <p className="quote">{t.quote}</p>
-                <div className="t-author">
-                  <div className="t-avatar">{t.initials}</div>
-                  <div>
-                    <div className="name">{t.name}</div>
-                    <div className="loc">{t.loc}</div>
-                  </div>
+        <div className="t-grid">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={t.name} className="t-card">
+              <span className="stars">★★★★★</span>
+              <p className="quote">{t.quote}</p>
+              <div className="t-author">
+                <div className="t-avatar">{t.initials}</div>
+                <div>
+                  <div className="name">{t.name}</div>
+                  <div className="loc">{t.loc}</div>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="t-grid" aria-hidden="true">
-            {TESTIMONIALS.map((t, i) => (
-              <div key={t.name + "-dup"} className="t-card">
-                <span className="stars">★★★★★</span>
-                <p className="quote">{t.quote}</p>
-                <div className="t-author">
-                  <div className="t-avatar">{t.initials}</div>
-                  <div>
-                    <div className="name">{t.name}</div>
-                    <div className="loc">{t.loc}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+        <div className="t-grid" aria-hidden="true">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={t.name + "-dup"} className="t-card">
+              <span className="stars">★★★★★</span>
+              <p className="quote">{t.quote}</p>
+              <div className="t-author">
+                <div className="t-avatar">{t.initials}</div>
+                <div>
+                  <div className="name">{t.name}</div>
+                  <div className="loc">{t.loc}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -1169,7 +1184,7 @@ html{scroll-behavior:smooth;}
   transition:box-shadow .3s ease, border-color .3s ease, background .3s ease;
 }
 .mw-root header.is-scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(10,60,66,.06);background:rgba(250,248,244,.96);}
-.mw-root .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1180px;margin:0 auto;}
+.mw-root .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;width:100%;}
 .mw-root .logo{font-family:var(--ff-display);font-weight:800;font-size:1.4rem;color:var(--teal-darker);display:flex;align-items:center;gap:8px;}
 .mw-root .logo span{color:var(--coral);}
 .mw-root .logo-mark{width:34px;height:34px;border-radius:9px;background:var(--teal-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -1199,46 +1214,143 @@ html{scroll-behavior:smooth;}
 
 /* ===== HERO ===== */
 .mw-root .hero{
-  position:relative;background:linear-gradient(180deg,var(--teal-tint-2) 0%, var(--cream) 100%);
-  padding:64px 0 40px;overflow:hidden;
+  position:relative;
+  width:100%;height:100vh;min-height:640px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;text-align:center;
 }
-.mw-root .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
-.mw-root .hero-copy{animation:mwFadeUp .8s ease both;}
-.mw-root .hero h1{font-size:clamp(2.3rem,4.2vw,3.5rem);font-weight:700;margin-bottom:20px;}
-.mw-root .hero h1 em{font-style:normal;color:var(--coral);}
-.mw-root .hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:480px;margin-bottom:30px;line-height:1.65;}
-.mw-root .hero-cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:34px;}
-.mw-root .rating-chip{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-soft);}
+/* background image layer */
+.mw-root .hero-bg{
+  position:absolute;inset:0;z-index:0;
+}
+.mw-root .hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  display:block;
+  transform:scale(1.05);
+  animation:mwHeroZoom 14s ease-in-out infinite alternate;
+}
+@keyframes mwHeroZoom{
+  from{transform:scale(1.05);}
+  to{transform:scale(1.0);}
+}
+.mw-root .hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    160deg,
+    rgba(4,28,31,0.78) 0%,
+    rgba(7,62,66,0.65) 50%,
+    rgba(4,20,22,0.82) 100%
+  );
+}
+/* centered content */
+.mw-root .hero-center{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 24px;max-width:820px;
+  animation:mwFadeUp .9s ease both;
+}
+.mw-root .hero-badge-row{
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;
+}
+.mw-root .hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;font-size:.78rem;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:7px 16px;border-radius:999px;
+}
+.mw-root .hero-headline{
+  font-family:var(--ff-display);
+  font-size:clamp(2.4rem,5.5vw,4.2rem);
+  font-weight:800;color:#fff;
+  line-height:1.1;margin-bottom:22px;
+  text-shadow:0 4px 24px rgba(0,0,0,.4);
+}
+.mw-root .hero-headline em{
+  font-style:normal;
+  background:linear-gradient(90deg,#FF8A6D,var(--coral));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.mw-root .hero-sub{
+  font-size:clamp(1rem,1.6vw,1.16rem);color:rgba(255,255,255,.82);
+  max-width:560px;line-height:1.7;margin-bottom:34px;
+}
+.mw-root .hero-cta-row{
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+  justify-content:center;margin-bottom:52px;
+}
+.mw-root .btn-hero-ghost{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(6px);
+  color:#fff;border:1.5px solid rgba(255,255,255,.45);
+  padding:15px 30px;border-radius:999px;
+  font-weight:600;font-size:.95rem;
+  transition:background .25s ease,transform .25s ease;
+}
+.mw-root .btn-hero-ghost:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);}
+/* trust strip */
+.mw-root .hero-trust{
+  display:flex;align-items:center;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:20px;padding:18px 24px;
+  flex-wrap:nowrap;justify-content:center;gap:0;
+  white-space:nowrap;
+}
+.mw-root .hero-trust-item{
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 28px;
+}
+.mw-root .ht-num{
+  font-family:var(--ff-display);font-weight:800;
+  font-size:1.55rem;color:#fff;line-height:1;
+  margin-bottom:4px;
+}
+.mw-root .ht-lbl{
+  font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.08em;color:rgba(255,255,255,.6);
+}
+.mw-root .ht-sep{
+  width:1px;height:36px;background:rgba(255,255,255,.2);
+  flex-shrink:0;
+}
+/* scroll cue */
+.mw-root .hero-scroll-cue{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,.5);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  animation:mwFadeUp 1s ease .6s both;
+}
+.mw-root .scroll-line{
+  width:1px;height:40px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.4),rgba(255,255,255,0));
+  animation:mwScrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes mwScrollPulse{
+  0%,100%{opacity:.5;transform:scaleY(1);}
+  50%{opacity:1;transform:scaleY(1.15);}
+}
 .mw-root .stars{color:var(--coral);letter-spacing:2px;font-size:1rem;}
+.mw-root .rating-chip{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-soft);}
 .mw-root .rating-chip strong{color:var(--teal-darker);}
-.mw-root .hero-art{position:relative;animation:mwFadeUp .9s ease .15s both;}
-.mw-root .hero-photo{
-  border-radius:24px;overflow:hidden;position:relative;aspect-ratio:4/4.6;
-  background:linear-gradient(160deg,var(--teal-deep),var(--teal-darker));
-}
-.mw-root .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.mw-root .floating-stat{
-  position:absolute;left:-30px;bottom:26px;background:#fff;border-radius:14px;
-  box-shadow:var(--shadow);padding:16px 20px;display:flex;align-items:center;gap:12px;
-  max-width:220px;animation:mwFadeUp 1s ease .4s both;
-}
-.mw-root .floating-stat .num{font-family:var(--ff-display);font-weight:800;font-size:1.9rem;color:var(--teal-deep);}
-.mw-root .floating-stat .num span{color:var(--coral);}
-.mw-root .floating-stat .lbl{font-size:.78rem;color:var(--ink-soft);line-height:1.3;}
 
 @keyframes mwFadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
 
 /* ===== INFO BAR ===== */
-.mw-root .info-bar{background:var(--teal-darker);color:#fff;}
-.mw-root .info-bar-grid{display:flex;align-items:center;gap:40px;padding:80px 24px;flex-wrap:wrap;}
-.mw-root .info-divider{width:1px;align-self:stretch;background:rgba(255,255,255,.15);min-height:72px;}
-.mw-root .info-item{display:flex;align-items:center;gap:20px;flex:1 1 260px;}
-.mw-root .info-item .ic{width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mw-root .info-bar{background:var(--teal-darker);color:#fff;margin-top:40px;}
+.mw-root .info-bar-grid{display:flex;align-items:center;gap:44px;padding:56px 56px;flex-wrap:wrap;}
+.mw-root .info-divider{width:1px;align-self:stretch;background:rgba(255,255,255,.15);min-height:70px;}
+.mw-root .info-item{display:flex;align-items:center;gap:22px;flex:1 1 240px;}
+.mw-root .info-item .ic{width:68px;height:68px;border-radius:18px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .mw-root .info-item .ic svg{width:32px;height:32px;stroke:var(--coral);}
-.mw-root .info-item h4{color:#fff;font-size:1.3rem;margin-bottom:6px;}
-.mw-root .info-item p{font-size:1.1rem;color:#CFE3E1;line-height:1.5;margin:0;}
-.mw-root .info-cta{flex-shrink:0; padding:24px 48px; font-size:1.1rem;}
-.mw-root .info-cta svg{width:14px;height:14px;transition:transform .2s ease;}
+.mw-root .info-item h4{color:#fff;font-size:1.2rem;margin-bottom:6px;}
+.mw-root .info-item p{font-size:1rem;color:#CFE3E1;line-height:1.5;margin:0;}
+.mw-root .info-cta{flex-shrink:0;padding:20px 40px;font-size:1.05rem;margin-left:auto;}
+.mw-root .info-cta svg{width:15px;height:15px;transition:transform .2s ease;}
 .mw-root .info-cta:hover svg{transform:translate(2px,-2px);}
 
 /* ===== SECTION GENERAL ===== */
@@ -1365,10 +1477,10 @@ html{scroll-behavior:smooth;}
 @keyframes mwPulse{0%{box-shadow:0 0 0 0 rgba(255,77,77,.6);}70%{box-shadow:0 0 0 7px rgba(255,77,77,0);}100%{box-shadow:0 0 0 0 rgba(255,77,77,0);}}
 
 /* ===== CARE MODES ===== */
-.mw-root .modes{background:var(--teal-darker);color:#fff;position:relative;overflow:hidden;}
+.mw-root .modes{background:var(--teal-darker);color:#fff;position:relative;overflow:hidden;padding:52px 0;}
 .mw-root .modes .section-head h2{color:#fff;}
 .mw-root .modes .section-head p{color:#B9D3D0;}
-.mw-root .mode-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-bottom:56px;}
+.mw-root .mode-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:36px;}
 .mw-root .mode-card{
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
   border-radius:var(--radius);overflow:hidden;transition:background .25s ease;
@@ -1376,14 +1488,14 @@ html{scroll-behavior:smooth;}
 .mw-root .mode-card:hover{background:rgba(255,255,255,.12);}
 .mw-root .mode-photo{aspect-ratio:16/10;overflow:hidden;}
 .mw-root .mode-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.mw-root .mode-card .mode-body{padding:28px 28px 32px;}
-.mw-root .mode-card .mi{width:48px;height:48px;border-radius:12px;background:var(--coral);display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;z-index:1;box-shadow:0 8px 18px rgba(0,0,0,.25);}
-.mw-root .mode-card .mi svg{width:24px;height:24px;}
-.mw-root .mode-card h3{color:#fff;font-size:1.15rem;margin-bottom:10px;}
-.mw-root .mode-card p{color:#B9D3D0;font-size:.92rem;line-height:1.6;margin-bottom:20px;}
-.mw-root .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:44px;border-top:1px solid rgba(255,255,255,.14);}
-.mw-root .stat-strip .stat h4{font-family:var(--ff-display);font-weight:800;font-size:2.4rem;color:var(--coral);margin-bottom:6px;}
-.mw-root .stat-strip .stat p{color:#B9D3D0;font-size:.88rem;line-height:1.5;margin:0;}
+.mw-root .mode-card .mode-body{padding:20px 22px 24px;}
+.mw-root .mode-card .mi{width:40px;height:40px;border-radius:10px;background:var(--coral);display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative;z-index:1;box-shadow:0 8px 18px rgba(0,0,0,.25);}
+.mw-root .mode-card .mi svg{width:20px;height:20px;}
+.mw-root .mode-card h3{color:#fff;font-size:1.05rem;margin-bottom:8px;}
+.mw-root .mode-card p{color:#B9D3D0;font-size:.88rem;line-height:1.55;margin-bottom:14px;}
+.mw-root .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);}
+.mw-root .stat-strip .stat h4{font-family:var(--ff-display);font-weight:800;font-size:2rem;color:var(--coral);margin-bottom:4px;}
+.mw-root .stat-strip .stat p{color:#B9D3D0;font-size:.85rem;line-height:1.5;margin:0;}
 
 /* ===== PROCESS ===== */
 .mw-root .process{background:var(--white);}
@@ -1507,8 +1619,9 @@ html{scroll-behavior:smooth;}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:980px){
-  .mw-root .hero-grid,.mw-root .about-grid,.mw-root .journey-grid,.mw-root .contact-grid{grid-template-columns:1fr;}
-  .mw-root .hero-art{order:-1;max-width:420px;margin:0 auto;}
+  .mw-root .about-grid,.mw-root .journey-grid,.mw-root .contact-grid{grid-template-columns:1fr;}
+  .mw-root .hero-trust{gap:0;}
+  .mw-root .hero-trust-item{padding:0 16px;}
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:repeat(2,1fr);}
   .mw-root .mode-grid{grid-template-columns:1fr;}
   .mw-root .program-card{grid-template-columns:1fr;}
