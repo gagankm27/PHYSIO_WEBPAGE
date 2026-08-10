@@ -19,11 +19,11 @@ const SKILLS = [
 ];
 
 const GALLERY_IMAGES = [
-  { src: "./Assets/About/About_01.jpeg", tag: "In Practice", caption: "Hands-on assessment and targeted treatment at the patient's home" },
-  { src: "./Assets/About/About_02.jpeg", tag: "Rehabilitation", caption: "Guided strengthening exercises for post-injury recovery" },
-  { src: "./Assets/About/About_03.jpeg", tag: "Manual Therapy", caption: "Precision manual techniques for joint mobility and pain relief" },
-  { src: "./Assets/About/About_04.jpeg", tag: "Patient Care", caption: "Personalised care plans designed around each patient's needs" },
-  { src: "./Assets/About/About_05.jpeg", tag: "Home Visit", caption: "Bringing clinical-grade physiotherapy directly to your doorstep" },
+  { src: "./Assets/About/About_01.jpeg", tag: "Spinal Care", caption: "Expert spinal alignment, decompression, and strengthening exercises to relieve chronic back pain." },
+  { src: "./Assets/About/About_02.jpeg", tag: "Muscle Rehab", caption: "Targeted soft tissue release and muscle strengthening to recover fully from hamstring and thigh strains." },
+  { src: "./Assets/About/About_03.jpeg", tag: "Joint Mobility", caption: "Comprehensive lower body rehabilitation to restore flexibility and strength in legs and knee joints." },
+  { src: "./Assets/About/About_04.jpeg", tag: "Post-Operative", caption: "Guided recovery protocols following orthopaedic surgeries to help you regain full function safely." },
+  { src: "./Assets/About/About_05.jpeg", tag: "Knee Replacement", caption: "Specialised early-stage mobilisation and ongoing therapy to accelerate recovery after total knee replacement." },
 ];
 
 /* ── ICON ────────────────────────────────────────────────────── */

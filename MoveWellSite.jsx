@@ -312,12 +312,7 @@ function Header() {
       <div className="nav-wrap">
         {/* Logo */}
         <a href="/" className="logo">
-          <span className="logo-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
-              <path d="M6 12h4l2-7 4 14 2-7h4" />
-            </svg>
-          </span>
-          Move<span>Well</span>
+          <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" style={{ height: "60px", borderRadius: "8px" }} />
         </a>
 
         {/* Right actions */}
@@ -442,12 +437,14 @@ function About() {
         </Reveal>
 
         <Reveal delay={120}>
-          <span className="eyebrow">About MoveWell</span>
+          <span className="eyebrow">About Hudadi Physiotherapy</span>
           <h2 className="h2-tight">
-            Bringing clinical-grade physiotherapy straight to your home
+            Clinical excellence,
+            <br />
+            delivered to your door.
           </h2>
           <p className="about-lead">
-            MoveWell was founded on one belief: you shouldn't have to travel when you're in pain.
+            Hudadi Physiotherapy & Rehabilitation was founded on one belief: you shouldn't have to travel when you're in pain.
             Our physiotherapist brings evidence-based care, professional equipment and genuine
             compassion directly to you — helping you recover from the root cause, not just the symptoms.
           </p>
@@ -551,7 +548,7 @@ export function BookingFilter() {
   const [location, setLocation] = useState("");
   const [injury, setInjury] = useState("");
   const [date, setDate] = useState("");
-  
+
   const today = new Date().toISOString().split('T')[0];
 
   const handleBook = () => {
@@ -597,10 +594,10 @@ export function BookingFilter() {
       {/* Date */}
       <div className="ap-bf-field">
         <label>Preferred Date</label>
-        <input 
+        <input
           type="date"
           min={today}
-          value={date} 
+          value={date}
           onChange={e => setDate(e.target.value)}
           className="ap-bf-input"
           style={{ padding: "13px 16px" }}
@@ -1168,8 +1165,8 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 MoveWell Physiotherapy. All Rights Reserved.</span>
-          <span>Made with care, for better movement.</span>
+          <span>© 2026 Hudadi Physiotherapy & Rehabilitation. All Rights Reserved.</span>
+          <span style={{ fontWeight: 600, letterSpacing: "0.05em", color: "var(--coral)" }}>MOVE BETTER. LIVE BETTER.</span>
         </div>
       </div>
     </footer>
