@@ -13,13 +13,7 @@ import React, { useEffect, useRef, useState } from "https://esm.sh/react@18.3.1"
 /* ----------------------------- DATA ---------------------------------- */
 
 const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#services", label: "Services" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#programs", label: "Programs" },
-  { href: "#about", label: "About Us" },
-  { href: "#blog", label: "Blogs" },
-  { href: "#contact", label: "Contact" },
+  { href: "/about", label: "Doctor's Profile" },
 ];
 
 const SERVICES = [
@@ -303,6 +297,8 @@ function CountUp({ end, suffix = "", duration = 1400 }) {
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const currentPath = window.location.pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -314,7 +310,8 @@ function Header() {
   return (
     <header className={scrolled ? "is-scrolled" : ""}>
       <div className="nav-wrap">
-        <a href="#home" className="logo">
+        {/* Logo */}
+        <a href="/" className="logo">
           <span className="logo-mark">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
               <path d="M6 12h4l2-7 4 14 2-7h4" />
@@ -323,12 +320,25 @@ function Header() {
           Move<span>Well</span>
         </a>
 
+        {/* Right actions */}
         <div className="nav-right">
           <span className="nav-phone">
             <IconPhone />
             <span className="txt">+91 98450 12345</span>
           </span>
-          <a href="#contact" className="btn btn-coral btn-sm">
+          <a
+            href="/about"
+            className="btn btn-sm"
+            style={{
+              background: currentPath === "/about" ? "var(--teal-tint)" : "transparent",
+              color: "var(--teal-deep)",
+              border: "1.5px solid var(--teal-deep)",
+              fontWeight: 600,
+            }}
+          >
+            Doctor's Profile
+          </a>
+          <a href="/#contact" className="btn btn-coral btn-sm">
             Book Appointment
           </a>
           <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
@@ -369,13 +379,28 @@ function Hero() {
           treatment and personalised care directly to your home — anytime, any day.
         </p>
 
-        <div className="hero-cta-row">
-          <a href="#contact" className="btn btn-coral">Book a Home Visit</a>
-          <a href="#services" className="btn btn-hero-ghost">See What We Treat ↓</a>
-        </div>
 
-        {/* trust strip */}
-        <div className="hero-trust">
+        {/* appointment booking filter placed in hero */}
+        <div style={{ width: "100%", marginTop: "10px" }}>
+          <BookingFilter />
+        </div>
+      </div>
+
+      {/* scroll cue */}
+      <div className="hero-scroll-cue">
+        <div className="scroll-line" />
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ INFO BAR -------------------------------- */
+
+function InfoBar() {
+  return (
+    <div className="info-bar" style={{ background: "var(--teal-darker)", padding: "30px 0" }}>
+      <div className="container" style={{ position: "relative", zIndex: 3, display: "flex", justifyContent: "center" }}>
+        <div className="hero-trust" style={{ border: "none", background: "transparent", boxShadow: "none" }}>
           <div className="hero-trust-item">
             <span className="ht-num">150+</span>
             <span className="ht-lbl">Patients Treated</span>
@@ -396,45 +421,6 @@ function Hero() {
             <span className="ht-lbl">Home-Based Care</span>
           </div>
         </div>
-      </div>
-
-      {/* scroll cue */}
-      <div className="hero-scroll-cue">
-        <div className="scroll-line" />
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ INFO BAR -------------------------------- */
-
-function InfoBar() {
-  return (
-    <div className="info-bar">
-      <div className="container info-bar-grid">
-        <div className="info-item">
-          <span className="ic"><IconPhone /></span>
-          <div>
-            <h4>Need Physiotherapy Services?</h4>
-            <p>Call: +91 98450 12345</p>
-            <p>WhatsApp: +91 98450 67890</p>
-          </div>
-        </div>
-
-        <div className="info-divider" />
-
-        <div className="info-item">
-          <span className="ic"><IconClock /></span>
-          <div>
-            <h4>Opening Hours</h4>
-            <p>Mon to Sat 9:00AM to 9:00PM</p>
-            <p>Sun 9:00AM to 3:00PM</p>
-          </div>
-        </div>
-
-        <a href="#contact" className="btn btn-ghost-light info-cta">
-          Make An Appointment <IconArrowUpRight />
-        </a>
       </div>
     </div>
   );
@@ -526,6 +512,108 @@ function Services() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* -------------------------------- SHARED DATA --------------------------------- */
+export const SERVICE_AREAS = [
+  { area: "Kengeri" },
+  { area: "Nagarabhavi" },
+  { area: "Ullal" },
+  { area: "Vijayanagar" },
+  { area: "Deepanjali Nagar" },
+  { area: "Banashankari" },
+  { area: "Girinagar" },
+  { area: "Kumaraswamy Layout" },
+  { area: "Basavanagudi" },
+  { area: "Sunkadakatte" },
+  { area: "Laggere" },
+  { area: "Srinagar" },
+  { area: "Basaveshwaranagar" },
+  { area: "Nayandalli" },
+];
+
+export const SPECIALIZATIONS = [
+  { icon: "🏃", title: "Sports Injuries & Therapy", desc: "Diagnosis and rehabilitation of ligament, muscle, and joint injuries for athletes." },
+  { icon: "💊", title: "Pain Management", desc: "Multi-modal approach to controlling and reducing chronic and acute pain." },
+  { icon: "👶", title: "Pediatric Physiotherapy", desc: "Gentle, safe therapy programs tailored for children's developing bodies." },
+  { icon: "👴", title: "Geriatric Physiotherapy", desc: "Fall prevention, balance training, and mobility care for older adults." },
+  { icon: "🧠", title: "Neurological Physiotherapy", desc: "Rehabilitation for stroke, Parkinson's, and nerve-related conditions." },
+  { icon: "🙌", title: "Manual Therapy", desc: "Hands-on joint mobilisation and soft tissue techniques for rapid relief." },
+  { icon: "🪡", title: "Dry Needling", desc: "Targeted needling to release muscle trigger points and reduce tension." },
+  { icon: "🏥", title: "Pre & Post-Operative Rehab", desc: "Structured plans to prepare for and recover from orthopaedic surgery." },
+  { icon: "🦶", title: "Gait Analysis", desc: "Detailed assessment of walking patterns to correct dysfunction and prevent injury." },
+  { icon: "🧬", title: "Motor Neuron Diseases", desc: "Specialist support for MND patients to maintain function and independence." },
+];
+
+/* -------------------------------- SHARED COMPONENTS --------------------------- */
+export function BookingFilter() {
+  const [location, setLocation] = useState("");
+  const [injury, setInjury] = useState("");
+  const [date, setDate] = useState("");
+  
+  const today = new Date().toISOString().split('T')[0];
+
+  const handleBook = () => {
+    const params = new URLSearchParams();
+    if (location) params.append("location", location);
+    if (injury) params.append("injury", injury);
+    if (date) params.append("date", date);
+
+    const href = `/#contact?${params.toString()}`;
+    const a = document.createElement('a');
+    a.href = href;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  return (
+    <div className="ap-booking-filter">
+      {/* Location */}
+      <div className="ap-bf-field">
+        <label>Location</label>
+        <div style={{ position: "relative" }}>
+          <select value={location} onChange={e => setLocation(e.target.value)} className="ap-bf-input">
+            <option value="">Select Area</option>
+            {SERVICE_AREAS.map(s => <option key={s.area} value={s.area}>{s.area}</option>)}
+          </select>
+          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--ink-soft)" }}>▼</div>
+        </div>
+      </div>
+
+      {/* Injury */}
+      <div className="ap-bf-field">
+        <label>Condition</label>
+        <div style={{ position: "relative" }}>
+          <select value={injury} onChange={e => setInjury(e.target.value)} className="ap-bf-input">
+            <option value="">Select Condition</option>
+            {SPECIALIZATIONS.map(s => <option key={s.title} value={s.title}>{s.title}</option>)}
+          </select>
+          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--ink-soft)" }}>▼</div>
+        </div>
+      </div>
+
+      {/* Date */}
+      <div className="ap-bf-field">
+        <label>Preferred Date</label>
+        <input 
+          type="date"
+          min={today}
+          value={date} 
+          onChange={e => setDate(e.target.value)}
+          className="ap-bf-input"
+          style={{ padding: "13px 16px" }}
+        />
+      </div>
+
+      {/* Button */}
+      <div>
+        <button onClick={handleBook} className="ap-bf-btn">
+          Book Now
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -870,6 +958,19 @@ function ContactSection() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const loc = params.get("location");
+    const inj = params.get("injury");
+    const dt = params.get("date");
+    if (loc || inj || dt) {
+      setForm(f => ({
+        ...f,
+        message: `Hi, I would like to book an appointment.\nLocation: ${loc || 'Not specified'}\nCondition: ${inj || 'Not specified'}\nPreferred Date: ${dt || 'Not specified'}`
+      }));
+    }
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
@@ -1109,6 +1210,46 @@ function Fabs() {
 const STYLES = `
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
+/* ── Booking Filter ── */
+.ap-booking-filter {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  padding: 24px 32px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 24px;
+  align-items: end;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.ap-bf-field label { display: block; font-size: 0.85rem; font-family: var(--ff-display); font-weight: 700; color: var(--teal-darker); margin-bottom: 8px; }
+.ap-bf-input {
+  width: 100%; padding: 14px 40px 14px 16px; border-radius: 12px; border: 1px solid rgba(10,60,66,0.15);
+  background: var(--white); box-shadow: 0 2px 8px rgba(10,60,66,0.04) inset;
+  font-family: var(--ff-display); font-size: 0.95rem; color: var(--ink); outline: none; cursor: pointer;
+  appearance: none; box-sizing: border-box;
+}
+.ap-bf-btn {
+  width: 100%;
+  background: var(--coral); color: var(--white); font-family: var(--ff-display); font-weight: 700;
+  padding: 15px 36px; border-radius: 12px; border: none; cursor: pointer;
+  font-size: 1.05rem; box-shadow: 0 6px 20px rgba(255,107,77,0.3);
+  transition: transform 0.2s, box-shadow 0.2s; height: 48px;
+}
+.ap-bf-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,77,0.4); }
+
+@media (max-width: 900px) {
+  .ap-booking-filter { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .ap-booking-filter { grid-template-columns: 1fr; }
+}
+
+
 .mw-root{
   --teal-deep:#0A5C63;
   --teal-darker:#073E42;
@@ -1246,7 +1387,7 @@ html{scroll-behavior:smooth;}
 .mw-root .hero-center{
   position:relative;z-index:2;
   display:flex;flex-direction:column;align-items:center;
-  padding:0 24px;max-width:820px;
+  padding:0 24px;width:100%;max-width:1180px;
   animation:mwFadeUp .9s ease both;
 }
 .mw-root .hero-badge-row{
@@ -1674,3 +1815,5 @@ export default function MoveWellSite() {
     </div>
   );
 }
+
+export { Header, Footer, Reveal, IconCheck, STYLES };
