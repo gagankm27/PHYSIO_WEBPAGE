@@ -722,41 +722,41 @@ function Services() {
 
   return (
     <>
-    <section className="services" id="services">
-      <div className="container">
-        <Reveal className="section-head center" as="div">
-          <span className="eyebrow">What We Treat</span>
-          <h2>Conditions we specialise in</h2>
-          <p>
-            Whether it's a sudden injury, chronic pain or post-surgical stiffness — every condition
-            is thoroughly assessed and treated with a personalised plan built for your body.
-          </p>
-        </Reveal>
+      <section className="services" id="services">
+        <div className="container">
+          <Reveal className="section-head center" as="div">
+            <span className="eyebrow">What We Treat</span>
+            <h2>Conditions we specialise in</h2>
+            <p>
+              Whether it's a sudden injury, chronic pain or post-surgical stiffness — every condition
+              is thoroughly assessed and treated with a personalised plan built for your body.
+            </p>
+          </Reveal>
 
-        <div className="service-grid">
-          {visible.map((s, i) => (
-            <Reveal key={s.title} delay={i * 90} className="service-card" onClick={() => setSelectedService(s)} style={{ cursor: "pointer" }}>
-              <div className="service-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={s.icon} />
-                </svg>
-              </div>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-              <span className="know-more">Know More →</span>
-            </Reveal>
-          ))}
-        </div>
+          <div className="service-grid">
+            {visible.map((s, i) => (
+              <Reveal key={s.title} delay={i * 90} className="service-card" onClick={() => setSelectedService(s)} style={{ cursor: "pointer" }}>
+                <div className="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={s.icon} />
+                  </svg>
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+                <span className="know-more">Know More →</span>
+              </Reveal>
+            ))}
+          </div>
 
-        <div className="services-footnote">
-          <p>Every treatment plan is tailored to your specific condition, monitored session-by-session and adjusted as you progress — because no two recoveries are the same.</p>
-          <button className="btn btn-outline" onClick={() => setShowAll((v) => !v)}>
-            {showAll ? "Collapse ↑" : "View All Services ↓"}
-          </button>
+          <div className="services-footnote">
+            <p>Every treatment plan is tailored to your specific condition, monitored session-by-session and adjusted as you progress — because no two recoveries are the same.</p>
+            <button className="btn btn-outline" onClick={() => setShowAll((v) => !v)}>
+              {showAll ? "Collapse ↑" : "View All Services ↓"}
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
-    <ServiceModal service={selectedService} onClose={() => setSelectedService(null)} />
+      </section>
+      <ServiceModal service={selectedService} onClose={() => setSelectedService(null)} />
     </>
   );
 }
@@ -789,6 +789,211 @@ export const SPECIALIZATIONS = [
   { icon: "🪡", title: "Dry Needling", desc: "Targeted needling to release muscle trigger points and reduce tension." },
   { icon: "🏥", title: "Pre & Post-Operative Rehab", desc: "Structured plans to prepare for and recover from orthopaedic surgery." },
   { icon: "🧬", title: "Motor Neuron Diseases", desc: "Specialist support for MND patients to maintain function and independence." },
+];
+
+export const CONDITIONS_WE_TREAT = [
+  {
+    category: "Cardiorespiratory Physiotherapy",
+    emoji: "❤️",
+    conditions: [
+      "Airway Clearance",
+      "Asthma",
+      "Breathing Exercises",
+      "Bronchitis",
+      "COPD",
+      "Cardiac Rehabilitation",
+      "Exercise & Endurance Training",
+      "ICU / Critical Care Physiotherapy",
+      "Pneumonia",
+      "Post-CABG Rehabilitation",
+      "Post-COVID Respiratory Rehabilitation",
+      "Post-MI Rehabilitation",
+      "Post-operative Chest Physiotherapy",
+      "Pulmonary Rehabilitation"
+    ]
+  },
+  {
+    category: "Disability & Rehabilitation Physiotherapy",
+    emoji: "♿",
+    conditions: [
+      "Activities of Daily Living (ADL) Training",
+      "Amputee Rehabilitation",
+      "Assistive Device Training",
+      "Balance & Mobility Training",
+      "Contracture Prevention",
+      "Functional Independence Training",
+      "Gait Training",
+      "Neurological Disability Rehabilitation",
+      "Physical Disability Rehabilitation",
+      "Postural Correction",
+      "Prosthetic & Orthotic Training",
+      "Spinal Cord Injury Rehabilitation",
+      "Stroke Rehabilitation",
+      "Wheelchair Training"
+    ]
+  },
+  {
+    category: "Geriatric Physiotherapy",
+    emoji: "🩺",
+    conditions: [
+      "Age-related Muscle Weakness",
+      "Fall Prevention",
+      "Falls & Balance Problems",
+      "Gait Disorders",
+      "General Deconditioning",
+      "Joint Stiffness",
+      "Mobility & Functional Training",
+      "Osteoarthritis",
+      "Osteoporosis",
+      "Parkinson’s Rehabilitation",
+      "Post-fracture Rehabilitation",
+      "Stroke Rehabilitation"
+    ]
+  },
+  {
+    category: "Neurological Physiotherapy",
+    emoji: "🧠",
+    conditions: [
+      "Ataxia & Balance Disorders",
+      "Bell’s Palsy / Facial Palsy",
+      "Cerebral Palsy",
+      "Guillain-Barré Syndrome (GBS)",
+      "Motor Neuron Disease",
+      "Multiple Sclerosis (MS)",
+      "Muscle weakness and coordination problems",
+      "Neuropathy",
+      "Parkinson’s Disease",
+      "Peripheral Nerve Injuries",
+      "Post-neurosurgical rehabilitation",
+      "Spinal Cord Injury (SCI)",
+      "Stroke / Hemiplegia",
+      "Traumatic Brain Injury (TBI)",
+      "Vestibular disorders & Vertigo"
+    ]
+  },
+  {
+    category: "OBG / Women’s Health Physiotherapy",
+    emoji: "🤰",
+    conditions: [
+      "Antenatal Physiotherapy",
+      "C-section Rehabilitation",
+      "Diastasis Recti",
+      "Normal Delivery Recovery",
+      "Pelvic Floor Dysfunction",
+      "Pelvic Floor Muscle Training",
+      "Pelvic Girdle Pain",
+      "Postnatal Physiotherapy",
+      "Postpartum Rehabilitation",
+      "Postural & Core Rehabilitation",
+      "Pre- and Postnatal Exercise Programs",
+      "Pregnancy-related Back Pain",
+      "Urinary Incontinence"
+    ]
+  },
+  {
+    category: "Orthopaedic Physiotherapy",
+    emoji: "🦴",
+    conditions: [
+      "Ankle Sprain",
+      "Cervical Spondylosis",
+      "Disc Bulge / Herniated Disc",
+      "Frozen Shoulder / Adhesive Capsulitis",
+      "Golfer’s Elbow",
+      "Intervertebral Disc Prolapse (IVDP)",
+      "Joint Stiffness",
+      "Knee Osteoarthritis",
+      "Ligament Injuries",
+      "Low Back Pain",
+      "Lumbar Spondylosis",
+      "Muscle Strains",
+      "Neck Pain",
+      "Post-operative Fracture Rehabilitation",
+      "Post-operative Orthopaedic Rehabilitation",
+      "Rotator Cuff Injuries",
+      "Sciatica",
+      "Tendinitis / Tendinopathy",
+      "Tennis Elbow",
+      "Total Hip Replacement (THR)",
+      "Total Knee Replacement (TKR)"
+    ]
+  },
+  {
+    category: "Pain Management",
+    emoji: "🔥",
+    conditions: [
+      "Acute & Chronic Pain",
+      "Electrotherapy-based Pain Management",
+      "Headache-related Musculoskeletal Pain",
+      "Joint Pain",
+      "Knee Pain",
+      "Low Back Pain",
+      "Muscle Spasm",
+      "Myofascial Pain",
+      "Neck Pain",
+      "Post-operative Pain",
+      "Sciatica",
+      "Shoulder Pain"
+    ]
+  },
+  {
+    category: "Pediatric Physiotherapy",
+    emoji: "👶",
+    conditions: [
+      "Cerebral Palsy",
+      "Congenital Deformities",
+      "Delayed Milestones",
+      "Developmental Coordination Disorders",
+      "Developmental Delay",
+      "Down Syndrome",
+      "Erb’s Palsy / Brachial Plexus Injury",
+      "Gait Abnormalities",
+      "Muscular Dystrophy",
+      "Pediatric Neurological Conditions",
+      "Post-operative Pediatric Rehabilitation",
+      "Spina Bifida",
+      "Torticollis"
+    ]
+  },
+  {
+    category: "Post-operative Rehabilitation",
+    emoji: "🏥",
+    conditions: [
+      "Abdominal Surgery Rehabilitation",
+      "ACL Reconstruction Rehabilitation",
+      "Cancer Surgery Rehabilitation",
+      "Fracture Rehabilitation",
+      "Joint Replacement Rehabilitation",
+      "Post-operative Mobility & Gait Training",
+      "Rotator Cuff Surgery Rehabilitation",
+      "Spinal Surgery Rehabilitation",
+      "THR Rehabilitation",
+      "TKR Rehabilitation"
+    ]
+  },
+  {
+    category: "Sports Physiotherapy",
+    emoji: "🏃",
+    conditions: [
+      "Achilles Tendinopathy",
+      "ACL / PCL Injuries",
+      "Ankle Sprains",
+      "Calf Muscle Injuries",
+      "Groin Strain",
+      "Hamstring Strain",
+      "MCL / LCL Injuries",
+      "Meniscus Injuries",
+      "Muscle Cramps",
+      "Overuse Injuries",
+      "Quadriceps Strain",
+      "Return-to-Sport Rehabilitation",
+      "Rotator Cuff Injuries",
+      "Shin Splints",
+      "Shoulder Dislocation",
+      "Sports Injury Prevention & Performance Rehabilitation",
+      "Sports-related Fractures",
+      "Tennis Elbow"
+    ]
+  }
 ];
 
 /* -------------------------------- SHARED COMPONENTS --------------------------- */
@@ -833,7 +1038,11 @@ export function BookingFilter() {
         <div style={{ position: "relative" }}>
           <select value={injury} onChange={e => setInjury(e.target.value)} className="ap-bf-input">
             <option value="">Select Condition</option>
-            {SPECIALIZATIONS.map(s => <option key={s.title} value={s.title}>{s.title}</option>)}
+            {CONDITIONS_WE_TREAT.map(cat => (
+              <optgroup key={cat.category} label={`${cat.emoji} ${cat.category}`}>
+                {cat.conditions.map(c => <option key={c} value={c}>{c}</option>)}
+              </optgroup>
+            ))}
           </select>
           <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--ink-soft)" }}>▼</div>
         </div>
@@ -1006,66 +1215,66 @@ function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   return (
     <>
-    <section className="pricing" id="pricing">
-      <div className="container">
-        <Reveal className="section-head center" as="div">
-          <span className="eyebrow">Transparent Pricing</span>
-          <h2>
-            Honest costs. <em>No surprises.</em>
-          </h2>
-          <p>
-            All session prices are clear and upfront — no hidden charges, no pressure to buy packages.
-            A home visit session starts at ₹799, making professional physiotherapy accessible to everyone.
-          </p>
-        </Reveal>
+      <section className="pricing" id="pricing">
+        <div className="container">
+          <Reveal className="section-head center" as="div">
+            <span className="eyebrow">Transparent Pricing</span>
+            <h2>
+              Honest costs. <em>No surprises.</em>
+            </h2>
+            <p>
+              All session prices are clear and upfront — no hidden charges, no pressure to buy packages.
+              A home visit session starts at ₹799, making professional physiotherapy accessible to everyone.
+            </p>
+          </Reveal>
 
-        <div className="pricing-grid">
-          {PRICING_PLANS.map((p, i) =>
-            p.featured ? (
-              <Reveal key={p.title} delay={i * 100} className="price-card price-card--featured" onClick={() => setSelectedPlan(p)} style={{ cursor: "pointer" }}>
-                <div className="price-badges">
-                  <span className="pill pill-teal">NEW</span>
-                  <span className="pill pill-outline">{p.tag}</span>
-                </div>
-                <h3>
-                  {p.title.split(",")[0]}, <em>{p.title.split(",")[1]}</em>
-                </h3>
-                <p>{p.desc}</p>
-                <div className="price-row">
-                  <div className="price-big">
-                    <span className="rupee">₹</span>
-                    {p.price.replace("₹", "")}
-                    <span className="per">{p.per}</span>
+          <div className="pricing-grid">
+            {PRICING_PLANS.map((p, i) =>
+              p.featured ? (
+                <Reveal key={p.title} delay={i * 100} className="price-card price-card--featured" onClick={() => setSelectedPlan(p)} style={{ cursor: "pointer" }}>
+                  <div className="price-badges">
+                    <span className="pill pill-teal">NEW</span>
+                    <span className="pill pill-outline">{p.tag}</span>
+                  </div>
+                  <h3>
+                    {p.title.split(",")[0]}, <em>{p.title.split(",")[1]}</em>
+                  </h3>
+                  <p>{p.desc}</p>
+                  <div className="price-row">
+                    <div className="price-big">
+                      <span className="rupee">₹</span>
+                      {p.price.replace("₹", "")}
+                      <span className="per">{p.per}</span>
+                    </div>
+                    <span className="price-note">{p.note}</span>
+                  </div>
+                  {p.conditions && <span className="price-conditions">{p.conditions}</span>}
+                  <div className="price-featured-footer">
+                    <span>Prefer to talk first? <a href="#contact">Book a tele-consult</a></span>
+                    <span className="btn btn-coral btn-sm">Learn More →</span>
+                  </div>
+                </Reveal>
+              ) : (
+                <Reveal key={p.title} delay={i * 100} className="price-card" onClick={() => setSelectedPlan(p)} style={{ cursor: "pointer" }}>
+                  <span className="pill pill-outline-dark">{p.tag}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                  <div className="price-row">
+                    <div className="price-big price-big--dark">
+                      {p.price}
+                      <span className="per">{p.per}</span>
+                    </div>
                   </div>
                   <span className="price-note">{p.note}</span>
-                </div>
-                {p.conditions && <span className="price-conditions">{p.conditions}</span>}
-                <div className="price-featured-footer">
-                  <span>Prefer to talk first? <a href="#contact">Book a tele-consult</a></span>
-                  <span className="btn btn-coral btn-sm">Learn More →</span>
-                </div>
-              </Reveal>
-            ) : (
-              <Reveal key={p.title} delay={i * 100} className="price-card" onClick={() => setSelectedPlan(p)} style={{ cursor: "pointer" }}>
-                <span className="pill pill-outline-dark">{p.tag}</span>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-                <div className="price-row">
-                  <div className="price-big price-big--dark">
-                    {p.price}
-                    <span className="per">{p.per}</span>
-                  </div>
-                </div>
-                <span className="price-note">{p.note}</span>
-                {p.conditions && <span className="price-conditions">{p.conditions}</span>}
-                <span className="btn btn-outline price-cta">Learn More →</span>
-              </Reveal>
-            )
-          )}
+                  {p.conditions && <span className="price-conditions">{p.conditions}</span>}
+                  <span className="btn btn-outline price-cta">Learn More →</span>
+                </Reveal>
+              )
+            )}
+          </div>
         </div>
-      </div>
-    </section>
-    <PricingModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} />
+      </section>
+      <PricingModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} />
     </>
   );
 }
