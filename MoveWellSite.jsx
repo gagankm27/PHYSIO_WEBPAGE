@@ -18,44 +18,84 @@ const NAV_LINKS = [
 
 const SERVICES = [
   {
-    icon: "M12 3v3M12 18v3M3 12h3M18 12h3M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0",
-    title: "Back & Neck Pain",
-    text: "Targeted mobilisation and strengthening for chronic or acute back and neck pain — get you back to daily life faster.",
-  },
-  {
-    icon: "M12 2v20M8 6l4-4 4 4M8 18l4 4 4-4",
-    title: "Joint Pain & Arthritis",
-    text: "Hands-on therapy to relieve pain, improve range of motion and slow joint degeneration in knees, hips and shoulders.",
-  },
-  {
-    icon: "M9 3a3 3 0 0 0-3 3v1a3 3 0 0 0 3 3M15 3a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3M12 10v11",
-    title: "Sports Injury Rehab",
-    text: "From ligament sprains to muscle tears — evidence-based recovery plans to get athletes back to full performance.",
-  },
-  {
-    icon: "M4.93 4.93a10 10 0 1 0 14.14 0M12 2v6",
-    title: "Post-Surgical Recovery",
-    text: "Structured rehabilitation after orthopaedic surgeries to restore strength, flexibility and function safely.",
-  },
-  {
     icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1m-6 0h6",
     title: "Neurological Rehab",
     text: "Specialised therapy for stroke recovery, Parkinson's and nerve injuries to improve balance and coordination.",
-  },
-  {
-    icon: "M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z",
-    title: "Posture & Ergonomics",
-    text: "Assessment and correction of poor posture caused by desk work and sedentary lifestyles before they cause lasting damage.",
+    img: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1200&auto=format&fit=crop",
+    detail: "Neurological physiotherapy is a specialist area focused on helping people who have experienced brain, spinal cord or nerve damage. Conditions like stroke, Parkinson's disease, multiple sclerosis and traumatic brain injury can significantly affect movement, balance, strength and daily function. Our home-based neurological rehab programme is designed to harness the brain's natural ability to rewire itself — a concept known as neuroplasticity — through targeted, repetitive and progressively challenging exercises.",
+    treats: ["Stroke rehabilitation", "Parkinson's disease", "Multiple sclerosis (MS)", "Traumatic brain injury", "Spinal cord injury", "Peripheral nerve injuries", "Balance and coordination disorders", "Cerebral palsy (adults)"],
+    approach: ["Gait re-training and walking rehabilitation", "Balance exercises using progressive challenge techniques", "Upper and lower limb strengthening and coordination", "Constraint-induced movement therapy (CIMT)", "Functional electrical stimulation (FES) where indicated", "Cognitive-motor dual-task training", "Home safety and fall prevention assessment"],
+    benefits: ["Improved balance and reduced fall risk", "Regained ability to walk independently", "Greater upper limb control and hand function", "Reduced muscle spasticity and stiffness", "Improved speech-related posture and breathing", "Enhanced confidence and independence in daily activities", "Better quality of life for both patient and caregiver"],
   },
   {
     icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
     title: "Senior Mobility Care",
     text: "Gentle, safe exercises for older adults focused on fall prevention, balance and maintaining independent movement.",
+    img: "./Assets/explanation/senior_care.jpg",
+    detail: "As we age, our muscles naturally weaken, joints stiffen and reaction times slow — all of which increase the risk of falls, injuries and loss of independence. Our Senior Mobility Care programme is specifically designed for adults aged 60 and above, focusing on safe, gentle and evidence-based exercises that can be performed at home. Every session is conducted by a qualified physiotherapist who understands the unique needs and limitations of older adults, ensuring each movement is performed correctly and comfortably.",
+    treats: ["Age-related muscle weakness (sarcopenia)", "Reduced balance and coordination", "Osteoarthritis of hip, knee and spine", "Osteoporosis and fracture risk", "Dizziness and vertigo", "Post-fall anxiety and confidence issues", "Chronic joint stiffness and pain", "Difficulty walking, climbing stairs or rising from chairs"],
+    approach: ["Personalised fall prevention exercise programmes", "Balance and proprioception training", "Gentle joint mobilisation and stretching", "Functional strength training (sit-to-stand, stepping)", "Home environment safety assessment", "Gait training with or without walking aids", "Education on safe movement and activity modification"],
+    benefits: ["Significantly reduced fall risk", "Greater confidence walking and moving independently", "Improved strength for daily tasks like climbing stairs", "Reduced joint pain and stiffness", "Better posture and spinal alignment", "Maintained independence for longer", "Improved mood, energy and overall wellbeing"],
+  },
+  {
+    icon: "M4.93 4.93a10 10 0 1 0 14.14 0M12 2v6",
+    title: "Post-Surgical Recovery",
+    text: "Structured rehabilitation after orthopaedic surgeries to restore strength, flexibility and function safely.",
+    img: "./Assets/explanation/post_surgery.jpg",
+    detail: "Surgery is only half the journey — structured rehabilitation is what determines how fully and quickly you recover. Whether you've had a total knee or hip replacement, spinal surgery, rotator cuff repair or ligament reconstruction, our post-surgical physiotherapy programme is tailored to your specific procedure and surgical timeline. Our physiotherapist works closely with your surgeon's protocol to guide you through each phase of recovery safely, from early mobilisation to full return of function.",
+    treats: ["Total knee replacement (TKR)", "Total hip replacement (THR)", "Rotator cuff repair", "ACL / ligament reconstruction", "Spinal fusion or discectomy", "Shoulder or elbow arthroplasty", "Fracture fixation (ORIF) recovery", "Carpal tunnel release"],
+    approach: ["Early post-operative mobilisation and swelling management", "Scar tissue management and wound care monitoring", "Progressive range of motion exercises", "Muscle activation and strengthening protocols", "Gait re-training and functional activity practice", "Electrotherapy for pain and swelling control", "Return-to-activity planning aligned with surgeon clearance"],
+    benefits: ["Faster, safer return to full movement", "Reduced post-operative stiffness and scar tissue formation", "Prevented complications like blood clots and muscle wasting", "Restored strength to pre-surgical levels", "Reduced dependence on pain medication", "Confident return to daily activities, work and hobbies", "Clear milestones and measurable progress every session"],
+  },
+  {
+    icon: "M12 2v20M8 6l4-4 4 4M8 18l4 4 4-4",
+    title: "Joint Pain & Arthritis",
+    text: "Hands-on therapy to relieve pain, improve range of motion and slow joint degeneration in knees, hips and shoulders.",
+    img: "./Assets/explanation/joints.jpg",
+    detail: "Joint pain and arthritis affect millions of people, making everyday activities like walking, climbing stairs or even getting dressed a painful challenge. Whether you're dealing with osteoarthritis (wear-and-tear), rheumatoid arthritis (inflammatory) or non-specific joint pain, physiotherapy is one of the most effective, evidence-based treatments available — without the side effects of long-term medication. Our approach combines hands-on therapy with targeted strengthening to relieve pain, restore movement and slow the progression of joint degeneration.",
+    treats: ["Osteoarthritis of knee, hip and spine", "Rheumatoid arthritis", "Gout-related joint stiffness", "Frozen shoulder (adhesive capsulitis)", "Patellofemoral pain syndrome", "Sacroiliac joint dysfunction", "Ankle and foot arthritis", "Wrist and thumb joint pain"],
+    approach: ["Joint mobilisation and manual therapy techniques", "Therapeutic ultrasound and TENS for pain relief", "Targeted muscle strengthening around affected joints", "Hydrotherapy advice and home aquatic exercise guidance", "Postural correction to reduce joint load", "Taping and bracing support where indicated", "Activity and lifestyle modification guidance"],
+    benefits: ["Significant reduction in daily joint pain", "Improved joint range of motion and flexibility", "Stronger muscles that protect and support the joint", "Slowed progression of cartilage degeneration", "Less dependence on pain killers and anti-inflammatories", "Ability to return to favourite activities and hobbies", "Improved sleep quality due to reduced night pain"],
+  },
+  {
+    icon: "M9 3a3 3 0 0 0-3 3v1a3 3 0 0 0 3 3M15 3a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3M12 10v11",
+    title: "Sports Injury Rehab",
+    text: "From ligament sprains to muscle tears — evidence-based recovery plans to get athletes back to full performance.",
+    img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop",
+    detail: "Sports injuries don't just affect professional athletes — they affect anyone who runs, trains at the gym, plays weekend sports or stays active. A poorly managed injury can sideline you for months or leave lasting weakness that leads to re-injury. Our sports injury rehabilitation programme is built around getting you back to full performance as quickly and safely as possible, using evidence-based techniques tailored to your specific sport, position and fitness level. Every plan includes a detailed return-to-sport protocol.",
+    treats: ["ACL, PCL and meniscus injuries", "Hamstring, quadriceps and calf strains", "Ankle sprains and ligament tears", "Shoulder dislocations and rotator cuff strains", "Tennis elbow and golfer's elbow", "Plantar fasciitis and Achilles tendinopathy", "Shin splints and stress fractures", "IT band syndrome and runner's knee"],
+    approach: ["Acute phase: PRICE protocol, taping and pain management", "Biomechanical and movement pattern analysis", "Sport-specific strength and conditioning", "Proprioception and neuromuscular control training", "Plyometric and power training for return to sport", "Video gait analysis for runners", "Individualised return-to-sport milestone programme"],
+    benefits: ["Full restoration of pre-injury strength and flexibility", "Dramatically reduced re-injury risk", "Improved movement mechanics and sports performance", "Faster return to training and competition", "Greater body awareness and injury prevention skills", "Sport-specific conditioning that goes beyond basic recovery", "Confidence to perform at full intensity again"],
+  },
+  {
+    icon: "M12 3v3M12 18v3M3 12h3M18 12h3M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0",
+    title: "Back & Neck Pain",
+    text: "Targeted mobilisation and strengthening for chronic or acute back and neck pain — get you back to daily life faster.",
+    img: "./Assets/explanation/back_nect.jpg",
+    detail: "Back and neck pain is one of the leading causes of disability worldwide, affecting people of all ages. Whether it's a sudden acute episode from lifting something heavy, or a chronic ache that's been present for years, physiotherapy addresses the root cause — not just the symptoms. Our approach combines manual therapy, targeted exercise and education to relieve pain, restore normal movement patterns and prevent recurrence. The majority of back and neck pain cases resolve completely with the right physiotherapy programme.",
+    treats: ["Lower back pain (acute and chronic)", "Cervical neck pain and stiffness", "Disc herniation and sciatica", "Spondylosis and degenerative disc disease", "Facet joint syndrome", "Whiplash associated disorders", "Text neck and postural neck pain", "Thoracic and mid-back pain"],
+    approach: ["Spinal joint mobilisation and manipulation", "Soft tissue release and trigger point therapy", "McKenzie method for disc-related pain", "Core stability and spinal strengthening", "TENS and therapeutic ultrasound", "Postural re-education and ergonomic advice", "Personalised home exercise programme"],
+    benefits: ["Rapid reduction in acute pain intensity", "Restored full range of spinal motion", "Strong core muscles that protect the spine long-term", "Ability to return to work, driving and daily activities", "Understanding of what caused the pain and how to prevent it", "Freedom from reliance on pain medication", "Lasting relief — not just temporary symptom management"],
+  },
+  {
+    icon: "M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z",
+    title: "Posture & Ergonomics",
+    text: "Assessment and correction of poor posture caused by desk work and sedentary lifestyles before they cause lasting damage.",
+    img: "./Assets/explanation/posture_correction.jpg",
+    detail: "Modern life — long hours at a desk, constant screen use and sedentary habits — is quietly damaging our posture and musculoskeletal health. Poor posture doesn't just cause pain; over time it leads to permanent structural changes, nerve compression, reduced lung capacity and decreased energy. Our Posture & Ergonomics programme combines a comprehensive postural assessment with targeted corrective exercises and practical advice on setting up your workstation, sleeping position and daily habits — stopping the damage before it becomes irreversible.",
+    treats: ["Forward head posture (tech neck)", "Rounded shoulders and kyphosis", "Lumbar hyperlordosis (sway back)", "Scoliosis-related postural imbalance", "Desk-related neck and shoulder tension", "Repetitive strain injuries (RSI)", "Chest tightness from poor thoracic posture", "Jaw pain related to forward head position"],
+    approach: ["Comprehensive postural analysis and movement assessment", "Workstation and home office ergonomics review", "Targeted stretching for tight, overactive muscles", "Strengthening of weak, underactive postural muscles", "Breathing retraining and thoracic mobility work", "Taping for postural cueing", "Daily habit and activity modification coaching"],
+    benefits: ["Significant reduction in neck, shoulder and back tension", "Improved posture visible within weeks", "Greater energy and reduced fatigue from better alignment", "Prevented progression to chronic musculoskeletal problems", "Reduced headache frequency related to neck tension", "Better breathing capacity and lung function", "Increased productivity and comfort during desk work"],
   },
   {
     icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
     title: "Pain Management",
     text: "Multi-modal approach combining electrotherapy, dry needling and manual techniques to control and reduce chronic pain.",
+    img: "./Assets/explanation/pain_management.jpg",
+    detail: "Chronic pain — pain that persists beyond 3 months — is complex, deeply personal and affects every aspect of life, from sleep and mood to relationships and the ability to work. Unlike acute pain, chronic pain often involves central sensitisation, where the nervous system itself becomes hypersensitive. Our multi-modal pain management programme addresses both the physical and neurological dimensions of chronic pain using a combination of hands-on therapy, electrotherapy, education and graded activity — without dependence on medication.",
+    treats: ["Chronic lower back pain", "Fibromyalgia", "Complex regional pain syndrome (CRPS)", "Chronic headaches and migraines", "Neuropathic pain and nerve pain", "Myofascial pain syndrome", "Osteoarthritis-related chronic pain", "Post-injury or post-surgical persistent pain"],
+    approach: ["TENS (transcutaneous electrical nerve stimulation)", "Dry needling for trigger point release", "Therapeutic ultrasound and interferential therapy", "Graded activity and graded exposure therapy", "Pain neuroscience education (PNE)", "Manual therapy and soft tissue techniques", "Mindful movement and relaxation strategies"],
+    benefits: ["Measurable reduction in pain intensity scores", "Greater control over flare-ups and triggers", "Reduced reliance on pain medication", "Improved sleep quality and daily energy", "Restored ability to engage in meaningful activities", "Better understanding of pain and reduced fear of movement", "Improved mood, confidence and quality of life"],
   },
 ];
 
@@ -67,7 +107,30 @@ const PRICING_PLANS = [
     price: "₹799",
     per: "/ session",
     note: "No package required · GST incl.",
+    conditions: "*Conditions apply — details discussed in your first call with Dr. Sushil",
     featured: false,
+    img: "./Assets/explanation/home.jpg",
+    detail: "Our Home Assessment session is the perfect starting point for anyone dealing with pain, restricted movement or a recent injury. A BPT-certified physiotherapist visits your home fully equipped, conducts a comprehensive evaluation of your condition, delivers hands-on treatment and leaves you with a tailored exercise programme. It's clinical-grade physiotherapy without the clinic — convenient, personal and immediately effective.",
+    includes: [
+      "Full musculoskeletal & postural assessment",
+      "Hands-on manual therapy and soft tissue treatment",
+      "Electrotherapy (TENS/ultrasound) if indicated",
+      "Personalised home exercise programme",
+      "Written session notes and progress update",
+      "Advice on activity modification and recovery",
+      "Direct communication with your physiotherapist post-session",
+    ],
+    advantages: [
+      "No travel — treatment comes to you",
+      "No waiting rooms or appointment delays",
+      "Familiar environment aids faster recovery",
+      "Full 45-60 minutes of dedicated, one-on-one care",
+      "Physiotherapist sees your home environment and gives practical advice",
+      "Flexible booking — morning, afternoon or evening",
+    ],
+    rating: 4.9,
+    ratingCount: "47 reviews",
+    highlight: "Most popular for first-time patients",
   },
   {
     tag: "FOLLOW-UP",
@@ -76,16 +139,63 @@ const PRICING_PLANS = [
     price: "₹399",
     per: "/ session",
     note: "Book same-day · GST incl.",
+    conditions: "*Conditions apply — details discussed in your first call with Dr. Sushil",
     featured: false,
+    img: "./Assets/explanation/video_consultation.jpg",
+    detail: "Our Video Consultation is designed as a smart, affordable way to stay on track between home visits. Your physiotherapist reviews your progress, corrects your exercise form live on video, adjusts your programme based on how you've responded and answers all your questions. It's the same expert guidance you'd get in person — without any travel, at a fraction of the cost. Same-day bookings are available so you're never left waiting.",
+    includes: [
+      "Live one-on-one video session (25-35 minutes)",
+      "Progress review and outcome measurement",
+      "Exercise form correction with real-time feedback",
+      "Updated home exercise programme sent post-session",
+      "Answers to all your questions and concerns",
+      "Decision on next steps: home visit, continue, or discharge",
+      "Session summary notes via WhatsApp or email",
+    ],
+    advantages: [
+      "Zero travel — join from home, work or anywhere",
+      "Same-day bookings available",
+      "Significantly lower cost than a home visit",
+      "Ideal between home visits to maintain momentum",
+      "Available 7 days a week including evenings",
+      "No compromise on quality — same qualified physiotherapist",
+    ],
+    rating: 4.8,
+    ratingCount: "31 reviews",
+    highlight: "Best for maintaining progress between home visits",
   },
   {
     tag: "HYBRID PHYSIO",
     title: "Recovery, reimagined.",
     desc: "Weekly home visit combined with unlimited video follow-ups — consistent, personalised care that fits your schedule and budget.",
-    price: "₹599",
+    price: "₹999",
     per: "/ week",
     note: "Billed weekly · cancel anytime · GST incl.",
+    conditions: "*Conditions apply — details discussed in your first call with Dr. Sushil",
     featured: true,
+    img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop",
+    detail: "The Hybrid Physio package is our most comprehensive and best-value offering — designed for patients who want consistent, professional physiotherapy care without the high cost of daily home visits. You receive one hands-on home visit per week for direct assessment and treatment, combined with unlimited video follow-up sessions throughout the week to keep your recovery on track every single day. It's the perfect blend of in-person clinical excellence and flexible digital support.",
+    includes: [
+      "1 home visit per week (full hands-on treatment session)",
+      "Unlimited video follow-up sessions throughout the week",
+      "Ongoing home exercise programme with weekly updates",
+      "Real-time form correction and progress tracking",
+      "WhatsApp access to your physiotherapist between sessions",
+      "Monthly outcome review and goal-setting session",
+      "Discharge planning and long-term prevention advice",
+    ],
+    advantages: [
+      "Best value — combines home visits and video at one weekly rate",
+      "Cancel anytime — no long-term commitment",
+      "Continuous care 7 days a week",
+      "Faster recovery through consistent monitoring",
+      "Direct physiotherapist contact whenever you need it",
+      "Suitable for all conditions — from acute injury to chronic pain",
+      "Transparent weekly billing — no surprises",
+    ],
+    rating: 5.0,
+    ratingCount: "28 reviews",
+    highlight: "Best value · Most comprehensive care plan",
   },
 ];
 
@@ -202,6 +312,12 @@ const IconCheck = () => (
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
+const IconMail = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
+  </svg>
+);
 const IconPhone = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -310,16 +426,35 @@ function Header() {
   return (
     <header className={scrolled ? "is-scrolled" : ""}>
       <div className="nav-wrap">
-        {/* Logo */}
-        <a href="/" className="logo">
-          <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" style={{ height: "60px", borderRadius: "8px" }} />
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          {currentPath !== "/" && (
+            <a
+              href="/"
+              className="btn btn-sm btn-outline-dark"
+              style={{
+                display: "flex", alignItems: "center", gap: "6px",
+                padding: "8px 12px", border: "1px solid rgba(0,0,0,0.1)",
+                background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)",
+                color: "var(--teal-darker)", fontWeight: "600", fontSize: "0.85rem"
+              }}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px" }}>
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              Back
+            </a>
+          )}
+          {/* Logo */}
+          <a href="/" className="logo">
+            <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" style={{ height: "60px", borderRadius: "8px" }} />
+          </a>
+        </div>
 
         {/* Right actions */}
         <div className="nav-right">
           <span className="nav-phone">
             <IconPhone />
-            <span className="txt">+91 98450 12345</span>
+            <span className="txt">+91 63645 89646</span>
           </span>
           <a
             href="/about"
@@ -336,7 +471,7 @@ function Header() {
           <a href="/#contact" className="btn btn-coral btn-sm">
             Book Appointment
           </a>
-          <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
+          <a href="https://wa.me/916364589646" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
             <IconWhatsapp /> Chat with Us
           </a>
         </div>
@@ -470,11 +605,123 @@ function About() {
 
 /* ------------------------------- SERVICES -------------------------------- */
 
+function ServiceModal({ service, onClose }) {
+  useEffect(() => {
+    if (!service) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [service, onClose]);
+
+  if (!service) return null;
+
+  return (
+    <div className="svc-modal-overlay" onClick={onClose}>
+      <div className="svc-modal-page" onClick={(e) => e.stopPropagation()}>
+        {/* Hero image */}
+        <div className="svc-modal-hero">
+          <img src={service.img} alt={service.title} />
+          <div className="svc-modal-hero-overlay" />
+          <button className="svc-modal-close" onClick={onClose} aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+          <div className="svc-modal-hero-content">
+            <div className="svc-modal-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d={service.icon} />
+              </svg>
+            </div>
+            <h2>{service.title}</h2>
+            <p>{service.text}</p>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="svc-modal-body">
+          <div className="svc-modal-container">
+
+            {/* Overview */}
+            <div className="svc-modal-section">
+              <span className="svc-modal-eyebrow">Overview</span>
+              <h3>What is {service.title}?</h3>
+              <p>{service.detail}</p>
+            </div>
+
+            <div className="svc-modal-two-col">
+              {/* What We Treat */}
+              <div className="svc-modal-section">
+                <span className="svc-modal-eyebrow">Conditions Covered</span>
+                <h3>What We Treat</h3>
+                <ul className="svc-modal-list">
+                  {service.treats.map((t) => (
+                    <li key={t}>
+                      <span className="svc-modal-bullet" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Our Approach */}
+              <div className="svc-modal-section">
+                <span className="svc-modal-eyebrow">Our Method</span>
+                <h3>Treatment Approach</h3>
+                <ul className="svc-modal-list svc-modal-list--approach">
+                  {service.approach.map((a, i) => (
+                    <li key={a}>
+                      <span className="svc-modal-num">{String(i + 1).padStart(2, "0")}</span>
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Benefits */}
+            <div className="svc-modal-section svc-modal-benefits-section">
+              <span className="svc-modal-eyebrow" style={{ color: "var(--coral)" }}>Results</span>
+              <h3>Benefits After Treatment</h3>
+              <div className="svc-modal-benefits-grid">
+                {service.benefits.map((b) => (
+                  <div key={b} className="svc-modal-benefit-card">
+                    <span className="svc-modal-benefit-tick">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="svc-modal-cta">
+              <p>Ready to start your recovery journey?</p>
+              <a href="/#contact" className="btn btn-coral" onClick={onClose}>Book a Home Visit</a>
+              <a href={`https://wa.me/916364589646`} target="_blank" rel="noreferrer" className="btn btn-whatsapp">Chat on WhatsApp</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Services() {
   const [showAll, setShowAll] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
   const visible = showAll ? SERVICES : SERVICES.slice(0, 4);
 
   return (
+    <>
     <section className="services" id="services">
       <div className="container">
         <Reveal className="section-head center" as="div">
@@ -488,7 +735,7 @@ function Services() {
 
         <div className="service-grid">
           {visible.map((s, i) => (
-            <Reveal key={s.title} delay={i * 90} className="service-card">
+            <Reveal key={s.title} delay={i * 90} className="service-card" onClick={() => setSelectedService(s)} style={{ cursor: "pointer" }}>
               <div className="service-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d={s.icon} />
@@ -509,6 +756,8 @@ function Services() {
         </div>
       </div>
     </section>
+    <ServiceModal service={selectedService} onClose={() => setSelectedService(null)} />
+    </>
   );
 }
 
@@ -539,7 +788,6 @@ export const SPECIALIZATIONS = [
   { icon: "🙌", title: "Manual Therapy", desc: "Hands-on joint mobilisation and soft tissue techniques for rapid relief." },
   { icon: "🪡", title: "Dry Needling", desc: "Targeted needling to release muscle trigger points and reduce tension." },
   { icon: "🏥", title: "Pre & Post-Operative Rehab", desc: "Structured plans to prepare for and recover from orthopaedic surgery." },
-  { icon: "🦶", title: "Gait Analysis", desc: "Detailed assessment of walking patterns to correct dysfunction and prevent injury." },
   { icon: "🧬", title: "Motor Neuron Diseases", desc: "Specialist support for MND patients to maintain function and independence." },
 ];
 
@@ -616,8 +864,148 @@ export function BookingFilter() {
 
 /* -------------------------------- PRICING --------------------------------- */
 
-function Pricing() {
+function PricingModal({ plan, onClose }) {
+  useEffect(() => {
+    if (!plan) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [plan, onClose]);
+
+  if (!plan) return null;
+
+  const stars = Math.round(plan.rating);
+
   return (
+    <div className="svc-modal-overlay" onClick={onClose}>
+      <div className="svc-modal-page pm-page" onClick={(e) => e.stopPropagation()}>
+
+        {/* Hero */}
+        <div className="svc-modal-hero pm-hero">
+          <img src={plan.img} alt={plan.title} />
+          <div className="svc-modal-hero-overlay" />
+          <button className="svc-modal-close" onClick={onClose} aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+          <div className="svc-modal-hero-content">
+            <span className="pm-hero-tag">{plan.tag}</span>
+            <h2>{plan.featured ? "Recovery, reimagined." : plan.title}</h2>
+            <p>{plan.desc}</p>
+            <div className="pm-hero-price">
+              <span className="pm-price-big">{plan.price}</span>
+              <span className="pm-price-per">{plan.per}</span>
+              <span className="pm-price-note">{plan.note}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Body */}
+        <div className="svc-modal-body">
+          <div className="svc-modal-container">
+
+            {/* Rating + Highlight */}
+            <div className="pm-rating-bar">
+              <div className="pm-rating-stars">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} style={{ color: i < stars ? "var(--coral)" : "#ddd", fontSize: "1.3rem" }}>★</span>
+                ))}
+                <strong>{plan.rating}</strong>
+                <span className="pm-rating-count">({plan.ratingCount})</span>
+              </div>
+              {plan.highlight && (
+                <span className="pm-highlight-badge">{plan.highlight}</span>
+              )}
+            </div>
+
+            {/* Overview */}
+            <div className="svc-modal-section">
+              <span className="svc-modal-eyebrow">About This Plan</span>
+              <h3>What is the {plan.title.includes("reimagined") ? "Hybrid Physio" : plan.title} plan?</h3>
+              <p>{plan.detail}</p>
+            </div>
+
+            <div className="svc-modal-two-col">
+              {/* What's Included */}
+              <div className="svc-modal-section">
+                <span className="svc-modal-eyebrow">What's Included</span>
+                <h3>Every session includes</h3>
+                <ul className="svc-modal-list">
+                  {plan.includes.map((item) => (
+                    <li key={item}>
+                      <span className="svc-modal-bullet" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Advantages */}
+              <div className="svc-modal-section">
+                <span className="svc-modal-eyebrow">Why Choose This</span>
+                <h3>Key advantages</h3>
+                <ul className="svc-modal-list svc-modal-list--approach">
+                  {plan.advantages.map((a, i) => (
+                    <li key={a}>
+                      <span className="svc-modal-num">{String(i + 1).padStart(2, "0")}</span>
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Benefits after treatment */}
+            <div className="svc-modal-section svc-modal-benefits-section">
+              <span className="svc-modal-eyebrow" style={{ color: "var(--coral)" }}>Outcomes</span>
+              <h3>Benefits of Consistent Physiotherapy</h3>
+              <div className="svc-modal-benefits-grid">
+                {[
+                  "Pain significantly reduced or eliminated",
+                  "Restored strength and full range of motion",
+                  "Faster recovery vs. unguided self-treatment",
+                  "Lower risk of re-injury or chronic relapse",
+                  "Reduced dependence on pain medication",
+                  "Return to work, sport and daily activities",
+                  "Greater body awareness and self-management skills",
+                  "Improved sleep, energy and quality of life",
+                  "Personalised care — no generic protocols",
+                ].map((b) => (
+                  <div key={b} className="svc-modal-benefit-card">
+                    <span className="svc-modal-benefit-tick">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="svc-modal-cta">
+              <p>Ready to book the <strong style={{ color: "#9FD8FF" }}>{plan.title.includes("reimagined") ? "Hybrid Physio" : plan.title}</strong> plan?</p>
+              <a href="/#contact" className="btn btn-coral" onClick={onClose}>Book Now — {plan.price}{plan.per}</a>
+              <a href="https://wa.me/916364589646" target="_blank" rel="noreferrer" className="btn btn-whatsapp">Chat on WhatsApp</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Pricing() {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  return (
+    <>
     <section className="pricing" id="pricing">
       <div className="container">
         <Reveal className="section-head center" as="div">
@@ -634,7 +1022,7 @@ function Pricing() {
         <div className="pricing-grid">
           {PRICING_PLANS.map((p, i) =>
             p.featured ? (
-              <Reveal key={p.title} delay={i * 100} className="price-card price-card--featured">
+              <Reveal key={p.title} delay={i * 100} className="price-card price-card--featured" onClick={() => setSelectedPlan(p)} style={{ cursor: "pointer" }}>
                 <div className="price-badges">
                   <span className="pill pill-teal">NEW</span>
                   <span className="pill pill-outline">{p.tag}</span>
@@ -651,13 +1039,14 @@ function Pricing() {
                   </div>
                   <span className="price-note">{p.note}</span>
                 </div>
+                {p.conditions && <span className="price-conditions">{p.conditions}</span>}
                 <div className="price-featured-footer">
                   <span>Prefer to talk first? <a href="#contact">Book a tele-consult</a></span>
-                  <a href="#contact" className="btn btn-coral btn-sm">Get Started</a>
+                  <span className="btn btn-coral btn-sm">Learn More →</span>
                 </div>
               </Reveal>
             ) : (
-              <Reveal key={p.title} delay={i * 100} className="price-card">
+              <Reveal key={p.title} delay={i * 100} className="price-card" onClick={() => setSelectedPlan(p)} style={{ cursor: "pointer" }}>
                 <span className="pill pill-outline-dark">{p.tag}</span>
                 <h3>{p.title}</h3>
                 <p>{p.desc}</p>
@@ -668,13 +1057,16 @@ function Pricing() {
                   </div>
                 </div>
                 <span className="price-note">{p.note}</span>
-                <a href="#contact" className="btn btn-outline price-cta">Book This</a>
+                {p.conditions && <span className="price-conditions">{p.conditions}</span>}
+                <span className="btn btn-outline price-cta">Learn More →</span>
               </Reveal>
             )
           )}
         </div>
       </div>
     </section>
+    <PricingModal plan={selectedPlan} onClose={() => setSelectedPlan(null)} />
+    </>
   );
 }
 
@@ -938,7 +1330,6 @@ function Blog() {
                 <span className="blog-tag">{b.tag}</span>
                 <h3>{b.title}</h3>
                 <p>{b.text}</p>
-                <span className="blog-read">Read More Blog →</span>
               </div>
             </Reveal>
           ))}
@@ -1011,8 +1402,9 @@ function ContactSection() {
             out today — recovery starts with one message.
           </p>
           <ul className="contact-meta">
-            <li><IconPhone /> +91 98450 12345</li>
-            <li><IconClock /> Mon to Sat 9:00AM to 9:00PM · Sun 9:00AM to 3:00PM</li>
+            <li><IconPhone /> +91 63645 89646</li>
+            <li><IconMail /> info@hudadi.com</li>
+            <li><IconClock /> Mon to Sat 8:00AM to 9:00PM</li>
           </ul>
         </Reveal>
 
@@ -1099,7 +1491,7 @@ function CtaBanner() {
           <h2>Ready to move without pain?</h2>
           <p>Book your first home physiotherapy session today — our therapist will be at your door within 24 hours, fully equipped and ready to help.</p>
         </Reveal>
-        <a href="tel:+919845012345" className="btn btn-coral">Call +91 98450 12345</a>
+        <a href="tel:+916364589646" className="btn btn-coral">Call +91 63645 89646</a>
       </div>
     </section>
   );
@@ -1114,12 +1506,7 @@ function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <a href="#home" className="logo">
-              <span className="logo-mark">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
-                  <path d="M6 12h4l2-7 4 14 2-7h4" />
-                </svg>
-              </span>
-              Move<span style={{ color: "var(--coral)" }}>Well</span>
+              <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" style={{ height: "60px", background: "var(--teal-tint-2)", padding: "8px 24px", borderRadius: "12px", boxSizing: "content-box" }} />
             </a>
             <p>Expert physiotherapy care to relieve pain, restore mobility and improve overall wellbeing — with treatment plans built around you.</p>
             <div className="footer-social">
@@ -1136,30 +1523,28 @@ function Footer() {
           <div>
             <h4>Company</h4>
             <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#">Careers</a></li>
+              <li><a href="/about">Doctor's Profile</a></li>
               <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#">Disclaimer</a></li>
             </ul>
           </div>
 
           <div>
             <h4>Areas We Cover</h4>
             <ul>
-              <li><a href="#contact">Indiranagar</a></li>
-              <li><a href="#contact">Koramangala</a></li>
-              <li><a href="#contact">Whitefield</a></li>
-              <li><a href="#contact">See Full Coverage List</a></li>
+              <li><a href="#contact">Kengeri</a></li>
+              <li><a href="#contact">Nagarabhavi</a></li>
+              <li><a href="#contact">Vijayanagar</a></li>
+              <li><a href="#contact">Banashankari</a></li>
             </ul>
           </div>
 
           <div>
             <h4>Services</h4>
             <ul>
-              <li><a href="#services">Joint Pain</a></li>
-              <li><a href="#services">Spine Pain</a></li>
-              <li><a href="#services">Neurological</a></li>
-              <li><a href="#services">Post-Surgical</a></li>
+              <li><a href="#services">Neurological Rehab</a></li>
+              <li><a href="#services">Senior Mobility Care</a></li>
+              <li><a href="#services">Post-Surgical Recovery</a></li>
+              <li><a href="#services">Joint Pain & Arthritis</a></li>
             </ul>
           </div>
         </div>
@@ -1192,10 +1577,10 @@ function Fabs() {
           <IconArrowUp />
         </button>
       )}
-      <a className="fab fab-secondary" aria-label="Call us" href="tel:+919845012345">
+      <a className="fab fab-secondary" aria-label="Call us" href="tel:+916364589646">
         <IconPhone />
       </a>
-      <a className="fab fab-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer" href="https://wa.me/919845012345">
+      <a className="fab fab-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer" href="https://wa.me/916364589646">
         <IconWhatsapp />
       </a>
     </div>
@@ -1784,6 +2169,173 @@ html{scroll-behavior:smooth;}
   .mw-root .therapy-banner .overlay-text p{display:none;}
   .mw-root .form-row{grid-template-columns:1fr;}
   .mw-root .program-copy{padding:36px 28px;}
+}
+
+/* ===== SERVICE MODAL ===== */
+.svc-modal-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(4,20,22,0.65);
+  backdrop-filter:blur(4px);
+  animation:svcFadeIn .25s ease both;
+  overflow-y:auto;
+}
+@keyframes svcFadeIn{from{opacity:0;}to{opacity:1;}}
+.svc-modal-page{
+  min-height:100vh;background:var(--cream);
+  animation:svcSlideUp .4s cubic-bezier(.2,.8,.3,1) both;
+}
+@keyframes svcSlideUp{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+/* Hero */
+.svc-modal-hero{
+  position:relative;height:420px;overflow:hidden;
+}
+.svc-modal-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+.svc-modal-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(4,28,31,0.82) 0%,rgba(7,62,66,0.6) 60%,rgba(4,20,22,0.75) 100%);
+}
+.svc-modal-close{
+  position:absolute;top:24px;right:24px;z-index:10;
+  width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  transition:background .2s,transform .2s;
+}
+.svc-modal-close:hover{background:rgba(255,255,255,0.28);transform:scale(1.08);}
+.svc-modal-close svg{width:20px;height:20px;}
+.svc-modal-hero-content{
+  position:absolute;bottom:0;left:0;right:0;z-index:2;
+  padding:40px 56px;
+}
+.svc-modal-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--coral);margin-bottom:14px;
+}
+.svc-modal-icon svg{width:28px;height:28px;}
+.svc-modal-hero-content h2{
+  font-family:var(--ff-display);font-weight:800;
+  font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fff;margin-bottom:10px;line-height:1.1;
+}
+.svc-modal-hero-content p{color:rgba(255,255,255,0.82);font-size:1rem;line-height:1.6;max-width:560px;}
+
+/* Body */
+.svc-modal-body{padding:60px 0 80px;}
+.svc-modal-container{max-width:1060px;margin:0 auto;padding:0 40px;}
+.svc-modal-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--ff-body);font-weight:600;font-size:.75rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--coral-dark);
+  margin-bottom:10px;
+}
+.svc-modal-eyebrow::before{content:"";width:18px;height:2px;background:var(--coral);display:inline-block;}
+.svc-modal-section{margin-bottom:48px;}
+.svc-modal-section h3{font-family:var(--ff-display);font-size:1.45rem;font-weight:700;color:var(--teal-darker);margin-bottom:16px;}
+.svc-modal-section > p{color:var(--ink-soft);font-size:1rem;line-height:1.75;max-width:740px;}
+
+/* Two column */
+.svc-modal-two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:48px;}
+
+/* Lists */
+.svc-modal-list{display:flex;flex-direction:column;gap:10px;padding:0;margin:0;list-style:none;}
+.svc-modal-list li{display:flex;align-items:flex-start;gap:12px;font-size:.94rem;color:var(--ink-soft);line-height:1.5;}
+.svc-modal-bullet{width:8px;height:8px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:6px;}
+.svc-modal-list--approach li{gap:16px;align-items:flex-start;}
+.svc-modal-num{
+  font-family:var(--ff-display);font-weight:800;font-size:1.1rem;
+  color:var(--teal-deep);opacity:0.35;min-width:32px;line-height:1.4;flex-shrink:0;
+}
+
+/* Benefits */
+.svc-modal-benefits-section{
+  background:var(--white);border-radius:24px;padding:40px;
+  border:1px solid var(--line);
+}
+.svc-modal-benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px;}
+.svc-modal-benefit-card{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--teal-tint-2);border-radius:14px;padding:16px 18px;
+  font-size:.9rem;color:var(--ink);line-height:1.5;
+}
+.svc-modal-benefit-tick{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--teal-deep);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;color:#fff;
+}
+.svc-modal-benefit-tick svg{width:13px;height:13px;}
+
+/* CTA */
+.svc-modal-cta{
+  margin-top:56px;padding:44px;border-radius:24px;
+  background:linear-gradient(130deg,var(--teal-deep),var(--teal-darker));
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.svc-modal-cta p{color:rgba(255,255,255,0.9);font-size:1.05rem;font-weight:600;margin:0;flex:1;min-width:200px;}
+.svc-modal-cta .btn{white-space:nowrap;}
+
+/* Responsive */
+@media(max-width:760px){
+  .svc-modal-hero{height:320px;}
+  .svc-modal-hero-content{padding:28px 24px;}
+  .svc-modal-container{padding:0 20px;}
+  .svc-modal-two-col{grid-template-columns:1fr;}
+  .svc-modal-benefits-grid{grid-template-columns:1fr 1fr;}
+  .svc-modal-cta{flex-direction:column;align-items:flex-start;padding:28px;}
+}
+@media(max-width:480px){
+  .svc-modal-benefits-grid{grid-template-columns:1fr;}
+}
+
+/* ===== PRICING MODAL ===== */
+.pm-hero-tag{
+  display:inline-flex;align-items:center;padding:5px 14px;border-radius:999px;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);
+  color:#fff;margin-bottom:14px;
+}
+.pm-hero-price{
+  display:flex;align-items:baseline;gap:10px;margin-top:20px;flex-wrap:wrap;
+}
+.pm-price-big{
+  font-family:var(--ff-display);font-weight:800;font-size:3rem;color:#fff;line-height:1;
+}
+.pm-price-per{
+  font-size:1.1rem;color:rgba(255,255,255,0.75);font-weight:500;
+}
+.pm-price-note{
+  font-size:0.8rem;color:rgba(255,255,255,0.55);
+  background:rgba(255,255,255,0.1);border-radius:999px;
+  padding:4px 12px;
+}
+.pm-rating-bar{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  background:var(--white);border-radius:16px;padding:20px 28px;
+  margin-bottom:44px;box-shadow:var(--shadow);
+}
+.pm-rating-stars{
+  display:flex;align-items:center;gap:6px;
+}
+.pm-rating-stars strong{font-family:var(--ff-display);font-size:1.2rem;color:var(--teal-darker);margin-left:4px;}
+.pm-rating-count{font-size:.88rem;color:var(--ink-soft);}
+.pm-highlight-badge{
+  display:inline-flex;align-items:center;
+  background:var(--teal-tint);color:var(--teal-deep);
+  font-size:.78rem;font-weight:700;letter-spacing:.05em;
+  padding:8px 18px;border-radius:999px;border:1.5px solid var(--teal-deep);
+}
+.mw-root .price-conditions{
+  display:block;
+  font-size:.75rem;
+  color:var(--ink-soft);
+  opacity:0.8;
+  margin-top:6px;
+  font-style:italic;
+}
+.mw-root .price-card--featured .price-conditions{
+  color:#ffffff;
+  opacity:0.9;
 }
 `;
 

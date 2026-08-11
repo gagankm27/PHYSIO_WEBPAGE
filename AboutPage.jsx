@@ -13,7 +13,6 @@ const SKILLS = [
   "Manual Therapy",
   "Dry Needling",
   "Pre & Post-Operative Management",
-  "Gait Analysis",
   "Hospital Management",
   "Rehabilitation & Home Visits",
 ];
@@ -401,7 +400,6 @@ export default function AboutPage() {
               </div>
               <h1 className="ap-name">Dr. Sushil Hudadi</h1>
               <p className="ap-title">(PT) · Physiotherapist</p>
-              <p className="ap-edu">BPT — Rajiv Gandhi University of Health Sciences, 2021–2025</p>
               <div className="ap-divider" />
               <p className="ap-vision">
                 Focused and compassionate Physiotherapist committed to helping patients manage pain, recover from injuries,
@@ -429,7 +427,7 @@ export default function AboutPage() {
               {/* CTAs */}
               <div className="ap-cta-row">
                 <a href="/#contact" className="btn btn-coral">Book a Consultation</a>
-                <a href="https://wa.me/919845012345" className="btn btn-outline" target="_blank" rel="noreferrer">
+                <a href="https://wa.me/916364589646" className="btn btn-outline" target="_blank" rel="noreferrer">
                   Chat on WhatsApp
                 </a>
               </div>
@@ -493,7 +491,6 @@ export default function AboutPage() {
               <div className="ap-gallery-body">
                 <span className="ap-gallery-tag">{item.tag}</span>
                 <p>{item.caption}</p>
-                <span className="ap-gallery-read">View Photo →</span>
               </div>
             </div>
           ))}
