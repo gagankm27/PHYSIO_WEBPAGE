@@ -479,7 +479,23 @@ function Header() {
           >
             Doctor's Profile
           </a>
-          <a href="/#contact" className="btn btn-coral btn-sm">
+          <a
+            href="/#contact"
+            className="btn btn-coral btn-sm"
+            onClick={(e) => {
+              if (window.location.pathname === "/" || window.location.pathname === "") {
+                e.preventDefault();
+                const contactEl = document.getElementById("contact");
+                if (contactEl) {
+                  contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => {
+                    const input = contactEl.querySelector("input[name='name']");
+                    if (input) input.focus();
+                  }, 400);
+                }
+              }
+            }}
+          >
             Book Appointment
           </a>
           <a href="https://wa.me/916364589646" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
@@ -530,7 +546,20 @@ function Header() {
           <a
             href="/#contact"
             className="btn btn-coral mobile-action-btn"
-            onClick={() => setMobileOpen(false)}
+            onClick={(e) => {
+              setMobileOpen(false);
+              if (window.location.pathname === "/" || window.location.pathname === "") {
+                e.preventDefault();
+                const contactEl = document.getElementById("contact");
+                if (contactEl) {
+                  contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => {
+                    const input = contactEl.querySelector("input[name='name']");
+                    if (input) input.focus();
+                  }, 400);
+                }
+              }
+            }}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: "18px", height: "18px" }}>
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -1809,10 +1838,32 @@ function ContactSection() {
       } catch (_) {}
     }
 
-    // 3. Listen for live booking events from any BookingFilter component on page
+    // 3. Auto-scroll to contact section if hash or intent exists
+    if (window.location.hash.includes("contact") || loc || inj || dt) {
+      setTimeout(() => {
+        const contactEl = document.getElementById("contact");
+        if (contactEl) {
+          contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          setTimeout(() => {
+            const input = contactEl.querySelector("input[name='name']");
+            if (input) input.focus();
+          }, 500);
+        }
+      }, 150);
+    }
+
+    // 4. Listen for live booking events from any BookingFilter component on page
     const handleCustomBooking = (e) => {
       if (e.detail) {
         applyBookingData(e.detail);
+        const contactEl = document.getElementById("contact");
+        if (contactEl) {
+          contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          setTimeout(() => {
+            const input = contactEl.querySelector("input[name='name']");
+            if (input) input.focus();
+          }, 500);
+        }
       }
     };
     window.addEventListener("movewell:book_appointment", handleCustomBooking);
