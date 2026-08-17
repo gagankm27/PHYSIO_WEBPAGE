@@ -363,10 +363,14 @@ const ABOUT_STYLES = `
   }
   @media (max-width: 768px) {
     .ap-competencies-section { display: none !important; }
+    .ap-gallery-card-mobile-hide { display: none !important; }
+    .ap-gallery-card-mobile-show { display: block !important; }
   }
   @media (max-width: 600px) {
     .ap-competencies-section { display: none !important; }
-    .ap-gallery { grid-template-columns: 1fr; padding: 0 16px; }
+    .ap-gallery-card-mobile-hide { display: none !important; }
+    .ap-gallery-card-mobile-show { display: block !important; }
+    .ap-gallery { grid-template-columns: 1fr; padding: 0 16px; gap: 18px; }
     .ap-gallery-item:first-child { grid-column: span 1; aspect-ratio: 4/3; }
     .ap-cta-banner { padding: 40px 20px; }
     .ap-spec-grid { 
@@ -509,17 +513,20 @@ export default function AboutPage() {
           </div>
         </div>
         <div className="ap-gallery">
-          {GALLERY_IMAGES.map((item, i) => (
-            <div key={i} className="ap-gallery-card">
-              <div className="ap-gallery-thumb">
-                <img src={item.src} alt={item.caption} />
+          {GALLERY_IMAGES.map((item, i) => {
+            const isMobileFeatured = ["Muscle Rehab", "Joint Mobility", "Post-Operative"].includes(item.tag);
+            return (
+              <div key={i} className={`ap-gallery-card ${isMobileFeatured ? "ap-gallery-card-mobile-show" : "ap-gallery-card-mobile-hide"}`}>
+                <div className="ap-gallery-thumb">
+                  <img src={item.src} alt={item.caption} />
+                </div>
+                <div className="ap-gallery-body">
+                  <span className="ap-gallery-tag">{item.tag}</span>
+                  <p>{item.caption}</p>
+                </div>
               </div>
-              <div className="ap-gallery-body">
-                <span className="ap-gallery-tag">{item.tag}</span>
-                <p>{item.caption}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
