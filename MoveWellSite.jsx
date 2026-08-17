@@ -551,12 +551,13 @@ function Header() {
             <IconWhatsapp /> Chat with Us
           </a>
 
-          <div className="mobile-nav-footer">
-            <a href="tel:+916364589646" className="mobile-phone-link" onClick={() => setMobileOpen(false)}>
-              <IconPhone />
-              <span>Call: +91 63645 89646</span>
-            </a>
-          </div>
+          <a
+            href="tel:+916364589646"
+            className="btn btn-call-mobile mobile-action-btn"
+            onClick={() => setMobileOpen(false)}
+          >
+            <IconPhone /> Call +91 63645 89646
+          </a>
         </div>
       </div>
     </header>
@@ -2276,34 +2277,24 @@ html{scroll-behavior:smooth;}
 .mw-root .item-text .subtitle{font-size:.78rem;color:var(--ink-light);margin-top:2px;}
 .mw-root .mobile-action-btn{
   width:100%;
-  padding:14px 18px;
+  height:46px;
+  padding:11px 16px;
   border-radius:12px;
-  font-size:1rem;
+  font-size:.92rem;
   font-weight:700;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:8px;
   text-decoration:none;
-  box-shadow:0 4px 14px rgba(0,0,0,.08);
 }
-.mw-root .mobile-nav-footer{
-  margin-top:4px;
-  padding-top:10px;
-  border-top:1px dashed rgba(10,60,66,.12);
+.mw-root .btn-call-mobile{
+  background:var(--teal-deep);
+  color:#fff;
+  box-shadow:0 4px 14px rgba(10,92,99,.25);
 }
-.mw-root .mobile-phone-link{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:10px;
-  border-radius:10px;
-  background:rgba(10,60,66,.05);
-  color:var(--teal-darker);
-  font-weight:600;
-  font-size:.9rem;
-  text-decoration:none;
+.mw-root .btn-call-mobile:hover{
+  background:var(--teal-darker);
 }
 
 /* ===== HERO ===== */
