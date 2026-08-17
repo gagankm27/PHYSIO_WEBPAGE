@@ -2,12 +2,32 @@ import React, { useEffect } from "https://esm.sh/react@18.3.1";
 import { STYLES } from "./MoveWellSite.jsx";
 
 const NOT_FOUND_STYLES = `
+  .nf-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 24px;
+  }
+  .nf-nav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .nf-nav-logo {
+    height: 52px;
+    display: block;
+  }
   .nf-page {
-    min-height: 100vh;
+    min-height: calc(100vh - 77px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 40px 20px;
     background: linear-gradient(135deg, var(--teal-tint-2) 0%, #ffffff 50%, var(--teal-tint) 100%);
     position: relative;
     overflow: hidden;
@@ -37,7 +57,7 @@ const NOT_FOUND_STYLES = `
     background: #ffffff;
     border: 1.5px solid var(--line);
     border-radius: 28px;
-    padding: 48px 36px;
+    padding: 52px 40px;
     max-width: 540px;
     width: 100%;
     text-align: center;
@@ -47,13 +67,6 @@ const NOT_FOUND_STYLES = `
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .nf-logo {
-    height: 48px;
-    margin-bottom: 24px;
-    background: var(--teal-tint-2);
-    padding: 6px 18px;
-    border-radius: 10px;
   }
   .nf-code {
     font-family: var(--ff-display);
@@ -102,16 +115,19 @@ const NOT_FOUND_STYLES = `
     box-shadow: 0 10px 28px rgba(255,107,77,0.45);
   }
   @media (max-width: 600px) {
+    .nf-navbar {
+      padding: 10px 16px;
+    }
+    .nf-nav-logo {
+      height: 42px;
+    }
     .nf-page {
       padding: 24px 16px;
+      min-height: calc(100vh - 63px);
     }
     .nf-card {
       padding: 36px 20px;
       border-radius: 20px;
-    }
-    .nf-logo {
-      height: 40px;
-      margin-bottom: 18px;
     }
     .nf-code {
       font-size: 5.2rem;
@@ -135,11 +151,17 @@ export default function NotFoundPage() {
       <style>{STYLES}</style>
       <style>{NOT_FOUND_STYLES}</style>
 
+      {/* Navbar with brand logo title only (no buttons) */}
+      <header className="nf-navbar">
+        <div className="nf-nav-inner">
+          <a href="/" title="Hudadi Physiotherapy">
+            <img src="./Assets/LOGO_01.png" alt="Hudadi Physiotherapy Logo" className="nf-nav-logo" />
+          </a>
+        </div>
+      </header>
+
       <main className="nf-page">
         <div className="nf-card">
-          <a href="/">
-            <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" className="nf-logo" />
-          </a>
           <span className="eyebrow" style={{ color: "var(--coral)", marginBottom: "4px" }}>
             404 Error
           </span>
