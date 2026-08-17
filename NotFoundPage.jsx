@@ -1,65 +1,84 @@
 import React, { useEffect } from "https://esm.sh/react@18.3.1";
-import { Header, Footer, STYLES } from "./MoveWellSite.jsx";
+import { STYLES } from "./MoveWellSite.jsx";
 
 const NOT_FOUND_STYLES = `
-  .nf-wrapper {
-    min-height: 70vh;
+  .nf-page {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 140px 24px 80px;
-    background: linear-gradient(135deg, var(--teal-tint-2) 0%, var(--white) 60%);
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--teal-tint-2) 0%, #ffffff 50%, var(--teal-tint) 100%);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
   }
-  .nf-wrapper::before {
+  .nf-page::before {
     content: "";
     position: absolute;
-    top: -100px;
-    right: -100px;
+    top: -120px;
+    right: -120px;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(255,107,77,0.14) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .nf-page::after {
+    content: "";
+    position: absolute;
+    bottom: -120px;
+    left: -120px;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(255,107,77,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(10,92,99,0.12) 0%, transparent 70%);
     border-radius: 50%;
   }
   .nf-card {
     background: #ffffff;
     border: 1.5px solid var(--line);
     border-radius: 28px;
-    padding: 56px 40px;
-    max-width: 640px;
+    padding: 48px 36px;
+    max-width: 540px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 20px 60px rgba(10,60,66,0.10);
+    box-shadow: 0 24px 70px rgba(10,60,66,0.12);
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+  .nf-logo {
+    height: 48px;
+    margin-bottom: 24px;
+    background: var(--teal-tint-2);
+    padding: 6px 18px;
+    border-radius: 10px;
+  }
   .nf-code {
     font-family: var(--ff-display);
-    font-size: clamp(5rem, 12vw, 7.5rem);
+    font-size: clamp(5.5rem, 14vw, 8rem);
     font-weight: 900;
-    line-height: 1;
-    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 50%, var(--teal-deep) 100%);
+    line-height: 0.95;
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 45%, var(--teal-deep) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     letter-spacing: -0.04em;
   }
   .nf-card h1 {
-    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem);
     color: var(--teal-darker);
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     line-height: 1.25;
+    font-weight: 800;
   }
   .nf-card p {
     color: var(--ink-soft);
-    font-size: 1.02rem;
+    font-size: 0.96rem;
     line-height: 1.6;
-    max-width: 480px;
-    margin: 0 0 32px;
+    max-width: 420px;
+    margin: 0 0 28px;
   }
   .nf-btn {
     height: 52px;
@@ -74,24 +93,34 @@ const NOT_FOUND_STYLES = `
     gap: 10px;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
   }
   .nf-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 28px rgba(255,107,77,0.45);
   }
   @media (max-width: 600px) {
-    .nf-wrapper {
-      padding: 110px 16px 60px;
+    .nf-page {
+      padding: 24px 16px;
     }
     .nf-card {
       padding: 36px 20px;
       border-radius: 20px;
     }
+    .nf-logo {
+      height: 40px;
+      margin-bottom: 18px;
+    }
+    .nf-code {
+      font-size: 5.2rem;
+    }
     .nf-btn {
-      width: 100% !important;
-      height: 52px !important;
-      font-size: 1.05rem !important;
-      border-radius: 12px !important;
+      max-width: 100%;
+      height: 52px;
+      font-size: 1.02rem;
+      border-radius: 12px;
     }
   }
 `;
@@ -106,17 +135,18 @@ export default function NotFoundPage() {
       <style>{STYLES}</style>
       <style>{NOT_FOUND_STYLES}</style>
 
-      <Header />
-
-      <main className="nf-wrapper">
+      <main className="nf-page">
         <div className="nf-card">
-          <span className="eyebrow" style={{ color: "var(--coral)", marginBottom: "8px" }}>
+          <a href="/">
+            <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" className="nf-logo" />
+          </a>
+          <span className="eyebrow" style={{ color: "var(--coral)", marginBottom: "4px" }}>
             404 Error
           </span>
           <div className="nf-code">404</div>
           <h1>Page Not Found</h1>
           <p>
-            The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let's get you back on track.
+            The page you are looking for doesn't exist or has been moved. Let's get you back to recovery.
           </p>
           <a href="/" className="btn btn-coral nf-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "18px", height: "18px" }}>
@@ -127,8 +157,6 @@ export default function NotFoundPage() {
           </a>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
