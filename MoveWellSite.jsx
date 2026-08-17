@@ -1124,35 +1124,18 @@ export function BookingFilter() {
       date: date || "",
     };
 
-    // Store in sessionStorage so it persists across pages
-    try {
-      sessionStorage.setItem("movewell_booking_data", JSON.stringify(bookingData));
-    } catch (_) {}
-
-    // Dispatch custom event for immediate auto-fill on current page
-    window.dispatchEvent(new CustomEvent("movewell:book_appointment", { detail: bookingData }));
-
-    // Prepare query parameters
-    const params = new URLSearchParams();
-    if (location) params.append("location", location);
-    if (injury) params.append("injury", injury);
-    if (date) params.append("date", date);
-
-    const queryString = params.toString();
-    const targetUrl = queryString ? `/?${queryString}#contact` : `/#contact`;
-
     if (window.location.pathname === "/" || window.location.pathname === "") {
-      const contactEl = document.getElementById("contact");
-      if (contactEl) {
-        contactEl.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.hash = "contact";
-      }
-      if (queryString && window.history.pushState) {
-        window.history.pushState(null, "", targetUrl);
-      }
+      // Immediate auto-fill and smooth scroll on the same page
+      window.dispatchEvent(new CustomEvent("movewell:book_appointment", { detail: bookingData }));
     } else {
-      window.location.href = targetUrl;
+      // Coming from another page like /about, pass in URL params
+      const params = new URLSearchParams();
+      if (location) params.append("location", location);
+      if (injury) params.append("injury", injury);
+      if (date) params.append("date", date);
+
+      const queryString = params.toString();
+      window.location.href = queryString ? `/?${queryString}#contact` : `/#contact`;
     }
   };
 
@@ -1812,47 +1795,23 @@ function ContactSection() {
   };
 
   useEffect(() => {
-    // 1. Check URL query params from search or hash
+    // 1. Check if arriving with explicit booking query params from another page
     const urlParams = new URLSearchParams(window.location.search);
-    let loc = urlParams.get("location");
-    let inj = urlParams.get("injury");
-    let dt = urlParams.get("date");
-
-    if (!loc && !inj && !dt && window.location.hash.includes("?")) {
-      const hashParams = new URLSearchParams(window.location.hash.split("?")[1]);
-      loc = hashParams.get("location");
-      inj = hashParams.get("injury");
-      dt = hashParams.get("date");
-    }
+    const loc = urlParams.get("location");
+    const inj = urlParams.get("injury");
+    const dt = urlParams.get("date");
 
     if (loc || inj || dt) {
       applyBookingData({ location: loc, injury: inj, date: dt });
-    } else {
-      // 2. Check sessionStorage
-      try {
-        const saved = sessionStorage.getItem("movewell_booking_data");
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          applyBookingData(parsed);
-        }
-      } catch (_) {}
-    }
-
-    // 3. Auto-scroll to contact section if hash or intent exists
-    if (window.location.hash.includes("contact") || loc || inj || dt) {
       setTimeout(() => {
         const contactEl = document.getElementById("contact");
         if (contactEl) {
           contactEl.scrollIntoView({ behavior: "smooth", block: "start" });
-          setTimeout(() => {
-            const input = contactEl.querySelector("input[name='name']");
-            if (input) input.focus();
-          }, 500);
         }
-      }, 150);
+      }, 250);
     }
 
-    // 4. Listen for live booking events from any BookingFilter component on page
+    // 2. Listen for live booking events ONLY when user clicks Book Now / Book Appointment
     const handleCustomBooking = (e) => {
       if (e.detail) {
         applyBookingData(e.detail);
@@ -1862,7 +1821,7 @@ function ContactSection() {
           setTimeout(() => {
             const input = contactEl.querySelector("input[name='name']");
             if (input) input.focus();
-          }, 500);
+          }, 450);
         }
       }
     };
