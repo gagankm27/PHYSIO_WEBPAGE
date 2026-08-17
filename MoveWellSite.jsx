@@ -1089,17 +1089,42 @@ export function BookingFilter() {
   const today = new Date().toISOString().split('T')[0];
 
   const handleBook = () => {
+    const bookingData = {
+      location: location || "",
+      injury: injury || "",
+      date: date || "",
+    };
+
+    // Store in sessionStorage so it persists across pages
+    try {
+      sessionStorage.setItem("movewell_booking_data", JSON.stringify(bookingData));
+    } catch (_) {}
+
+    // Dispatch custom event for immediate auto-fill on current page
+    window.dispatchEvent(new CustomEvent("movewell:book_appointment", { detail: bookingData }));
+
+    // Prepare query parameters
     const params = new URLSearchParams();
     if (location) params.append("location", location);
     if (injury) params.append("injury", injury);
     if (date) params.append("date", date);
 
-    const href = `/#contact?${params.toString()}`;
-    const a = document.createElement('a');
-    a.href = href;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const queryString = params.toString();
+    const targetUrl = queryString ? `/?${queryString}#contact` : `/#contact`;
+
+    if (window.location.pathname === "/" || window.location.pathname === "") {
+      const contactEl = document.getElementById("contact");
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.hash = "contact";
+      }
+      if (queryString && window.history.pushState) {
+        window.history.pushState(null, "", targetUrl);
+      }
+    } else {
+      window.location.href = targetUrl;
+    }
   };
 
   return (
@@ -1721,17 +1746,77 @@ function ContactSection() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const loc = params.get("location");
-    const inj = params.get("injury");
-    const dt = params.get("date");
-    if (loc || inj || dt) {
+  const applyBookingData = (data) => {
+    if (!data) return;
+    const { location, injury, date } = data;
+    if (location || injury || date) {
+      let matchedService = "";
+      if (injury) {
+        const direct = SERVICE_OPTIONS.find(s => s.toLowerCase() === injury.toLowerCase());
+        if (direct) {
+          matchedService = direct;
+        } else if (injury.toLowerCase().includes("back") || injury.toLowerCase().includes("neck")) {
+          matchedService = "Back & Neck Pain";
+        } else if (injury.toLowerCase().includes("knee") || injury.toLowerCase().includes("joint") || injury.toLowerCase().includes("shoulder") || injury.toLowerCase().includes("arthritis")) {
+          matchedService = "Joint Pain & Arthritis";
+        } else if (injury.toLowerCase().includes("sport") || injury.toLowerCase().includes("acl") || injury.toLowerCase().includes("runner")) {
+          matchedService = "Sports Injury Rehab";
+        } else if (injury.toLowerCase().includes("surg") || injury.toLowerCase().includes("post-op") || injury.toLowerCase().includes("replacement")) {
+          matchedService = "Post-Surgical Recovery";
+        } else if (injury.toLowerCase().includes("neuro") || injury.toLowerCase().includes("stroke") || injury.toLowerCase().includes("paralysis")) {
+          matchedService = "Neurological Rehab";
+        } else if (injury.toLowerCase().includes("posture") || injury.toLowerCase().includes("ergonomic") || injury.toLowerCase().includes("desk")) {
+          matchedService = "Posture & Ergonomics";
+        } else if (injury.toLowerCase().includes("senior") || injury.toLowerCase().includes("elderly") || injury.toLowerCase().includes("fall")) {
+          matchedService = "Senior Mobility Care";
+        } else {
+          matchedService = "Pain Management";
+        }
+      }
+
       setForm(f => ({
         ...f,
-        message: `Hi, I would like to book an appointment.\nLocation: ${loc || 'Not specified'}\nCondition: ${inj || 'Not specified'}\nPreferred Date: ${dt || 'Not specified'}`
+        service: matchedService || f.service || "",
+        message: `Hi, I would like to book a physiotherapy appointment with the following details:\n\n📍 Preferred Area: ${location || "Not specified"}\n🩺 Condition / Need: ${injury || "Not specified"}\n📅 Preferred Date: ${date || "Flexible / Earliest available"}\n\nPlease confirm availability.`
       }));
     }
+  };
+
+  useEffect(() => {
+    // 1. Check URL query params from search or hash
+    const urlParams = new URLSearchParams(window.location.search);
+    let loc = urlParams.get("location");
+    let inj = urlParams.get("injury");
+    let dt = urlParams.get("date");
+
+    if (!loc && !inj && !dt && window.location.hash.includes("?")) {
+      const hashParams = new URLSearchParams(window.location.hash.split("?")[1]);
+      loc = hashParams.get("location");
+      inj = hashParams.get("injury");
+      dt = hashParams.get("date");
+    }
+
+    if (loc || inj || dt) {
+      applyBookingData({ location: loc, injury: inj, date: dt });
+    } else {
+      // 2. Check sessionStorage
+      try {
+        const saved = sessionStorage.getItem("movewell_booking_data");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          applyBookingData(parsed);
+        }
+      } catch (_) {}
+    }
+
+    // 3. Listen for live booking events from any BookingFilter component on page
+    const handleCustomBooking = (e) => {
+      if (e.detail) {
+        applyBookingData(e.detail);
+      }
+    };
+    window.addEventListener("movewell:book_appointment", handleCustomBooking);
+    return () => window.removeEventListener("movewell:book_appointment", handleCustomBooking);
   }, []);
 
   const handleChange = (e) => {
