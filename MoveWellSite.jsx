@@ -1879,11 +1879,13 @@ function CtaBanner() {
   return (
     <section className="cta-banner">
       <div className="container cta-banner-inner">
-        <Reveal as="div">
+        <Reveal as="div" className="cta-text-block">
           <h2>Ready to move without pain?</h2>
           <p>Book your first home physiotherapy session today — our therapist will be at your door within 24 hours, fully equipped and ready to help.</p>
         </Reveal>
-        <a href="tel:+916364589646" className="btn btn-coral">Call +91 63645 89646</a>
+        <a href="tel:+916364589646" className="btn btn-coral cta-call-btn">
+          <IconPhone /> Call +91 63645 89646
+        </a>
       </div>
     </section>
   );
@@ -2864,6 +2866,40 @@ html{scroll-behavior:smooth;}
   .mw-root .desktop-blog-grid{display:none !important;}
   .mw-root .mobile-blog-wrap{display:block !important;}
   .mw-root .mobile-single-card{max-width:100%;margin:0 auto;box-shadow:0 10px 30px rgba(10,60,66,0.08);}
+  .mw-root .cta-banner-inner{
+    flex-direction:column !important;
+    align-items:stretch !important;
+    padding:44px 20px 48px !important;
+    gap:0 !important;
+    text-align:left !important;
+  }
+  .mw-root .cta-banner h2{
+    font-size:1.6rem !important;
+    max-width:100% !important;
+    line-height:1.25 !important;
+    margin-bottom:8px !important;
+  }
+  .mw-root .cta-banner p{
+    font-size:.95rem !important;
+    line-height:1.6 !important;
+    margin-top:8px !important;
+    margin-bottom:22px !important;
+    color:#d0ebe7 !important;
+  }
+  .mw-root .cta-banner .cta-call-btn,
+  .mw-root .cta-banner .btn{
+    width:100% !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    padding:14px 20px !important;
+    font-size:1.05rem !important;
+    font-weight:700 !important;
+    border-radius:12px !important;
+    height:52px !important;
+    box-shadow:0 8px 24px rgba(255,107,77,.35) !important;
+  }
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
   .mw-root .footer-grid{grid-template-columns:1fr;}
   .mw-root .therapy-banner .overlay-text p{display:none;}
