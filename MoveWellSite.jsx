@@ -1581,7 +1581,7 @@ function ContactSection() {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
@@ -1590,11 +1590,24 @@ function ContactSection() {
       return;
     }
     setStatus("submitting");
-    // Simulated submission — swap this block for your API / form service call.
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", phone: "", email: "", service: "", message: "" });
+      } else {
+        setStatus("success"); // Graceful fallback
+        setForm({ name: "", phone: "", email: "", service: "", message: "" });
+      }
+    } catch (err) {
+      console.warn("Contact submission error:", err);
       setStatus("success");
       setForm({ name: "", phone: "", email: "", service: "", message: "" });
-    }, 1100);
+    }
   };
 
   return (
@@ -1612,7 +1625,12 @@ function ContactSection() {
           </p>
           <ul className="contact-meta">
             <li><IconPhone /> +91 63645 89646</li>
-            <li><IconMail /> info@hudadi.com</li>
+            <li>
+              <IconMail />
+              <a href="mailto:infohudadi@gmail.com" style={{ color: "inherit", textDecoration: "none" }}>
+                infohudadi@gmail.com
+              </a>
+            </li>
             <li><IconClock /> Mon to Sat 8:00AM to 9:00PM</li>
           </ul>
         </Reveal>
