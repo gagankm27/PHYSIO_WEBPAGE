@@ -1659,6 +1659,15 @@ function Testimonials() {
 /* ---------------------------------- BLOG ------------------------------------ */
 
 function Blog() {
+  const [randomMobileIndex, setRandomMobileIndex] = useState(0);
+
+  useEffect(() => {
+    // Pick a random post index on initial mount/refresh
+    setRandomMobileIndex(Math.floor(Math.random() * BLOG_POSTS.length));
+  }, []);
+
+  const randomPost = BLOG_POSTS[randomMobileIndex] || BLOG_POSTS[0];
+
   return (
     <section className="blog" id="blog">
       <div className="container">
@@ -1670,7 +1679,8 @@ function Blog() {
           <a href="#" className="btn btn-outline">View All Blogs</a>
         </div>
 
-        <div className="blog-grid">
+        {/* Desktop: Full 3-card Grid */}
+        <div className="blog-grid desktop-blog-grid">
           {BLOG_POSTS.map((b, i) => (
             <Reveal key={b.title} delay={i * 100} className="blog-card">
               <div className="blog-thumb">
@@ -1683,6 +1693,20 @@ function Blog() {
               </div>
             </Reveal>
           ))}
+        </div>
+
+        {/* Mobile: Exactly 1 randomly picked blog card per refresh */}
+        <div className="mobile-blog-wrap">
+          <Reveal key={`mobile-${randomPost.title}`} className="blog-card mobile-single-card">
+            <div className="blog-thumb">
+              <img src={randomPost.img} alt={randomPost.title} />
+            </div>
+            <div className="blog-body">
+              <span className="blog-tag">{randomPost.tag}</span>
+              <h3>{randomPost.title}</h3>
+              <p>{randomPost.text}</p>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -2593,6 +2617,8 @@ html{scroll-behavior:smooth;}
 .mw-root .blog{background:var(--white);}
 .mw-root .blog-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;gap:20px;flex-wrap:wrap;}
 .mw-root .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.mw-root .desktop-blog-grid{display:grid;}
+.mw-root .mobile-blog-wrap{display:none;}
 .mw-root .blog-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#fff;transition:transform .25s ease;}
 .mw-root .blog-card:hover{transform:translateY(-6px);}
 .mw-root .blog-thumb{aspect-ratio:16/10;overflow:hidden;background:var(--teal-tint-2);}
@@ -2835,6 +2861,9 @@ html{scroll-behavior:smooth;}
     order: -1 !important;
   }
   .mw-root section{padding:60px 0;}
+  .mw-root .desktop-blog-grid{display:none !important;}
+  .mw-root .mobile-blog-wrap{display:block !important;}
+  .mw-root .mobile-single-card{max-width:100%;margin:0 auto;box-shadow:0 10px 30px rgba(10,60,66,0.08);}
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
   .mw-root .footer-grid{grid-template-columns:1fr;}
   .mw-root .therapy-banner .overlay-text p{display:none;}
