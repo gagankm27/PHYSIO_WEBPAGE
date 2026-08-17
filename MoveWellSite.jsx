@@ -423,22 +423,30 @@ function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 860) setMobileOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <header className={scrolled ? "is-scrolled" : ""}>
       <div className="nav-wrap">
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           {currentPath !== "/" && (
             <a
               href="/"
-              className="btn btn-sm btn-outline-dark"
+              className="btn btn-sm btn-outline-dark back-btn"
               style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "8px 12px", border: "1px solid rgba(0,0,0,0.1)",
-                background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)",
-                color: "var(--teal-darker)", fontWeight: "600", fontSize: "0.85rem"
+                display: "flex", alignItems: "center", gap: "5px",
+                padding: "6px 10px", border: "1px solid rgba(0,0,0,0.12)",
+                background: "rgba(255,255,255,0.85)", backdropFilter: "blur(4px)",
+                color: "var(--teal-darker)", fontWeight: "600", fontSize: "0.82rem"
               }}
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px" }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "14px", height: "14px" }}>
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
               Back
@@ -446,12 +454,12 @@ function Header() {
           )}
           {/* Logo */}
           <a href="/" className="logo">
-            <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" style={{ height: "60px", borderRadius: "8px" }} />
+            <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" className="header-logo-img" style={{ borderRadius: "8px" }} />
           </a>
         </div>
 
-        {/* Right actions */}
-        <div className="nav-right">
+        {/* Desktop actions */}
+        <div className="nav-right desktop-nav-right">
           <span className="nav-phone">
             <IconPhone />
             <span className="txt">+91 63645 89646</span>
@@ -474,6 +482,78 @@ function Header() {
           <a href="https://wa.me/916364589646" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
             <IconWhatsapp /> Chat with Us
           </a>
+        </div>
+
+        {/* Mobile menu toggle icon button */}
+        <button
+          type="button"
+          className={`mobile-menu-btn ${mobileOpen ? "is-active" : ""}`}
+          onClick={() => setMobileOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+        >
+          <span className="bar" />
+          <span className="bar" />
+          <span className="bar" />
+        </button>
+      </div>
+
+      {/* Mobile Collapsible Dropdown Menu */}
+      <div className={`mobile-nav-panel ${mobileOpen ? "is-open" : ""}`}>
+        <div className="mobile-nav-inner">
+          <a
+            href="/about"
+            className="mobile-item profile-item"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              background: currentPath === "/about" ? "var(--teal-tint)" : "var(--teal-tint-2)",
+            }}
+          >
+            <div className="item-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "20px", height: "20px" }}>
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <div className="item-text">
+              <span className="title">Doctor's Profile</span>
+              <span className="subtitle">Dr. Sushil Hudadi (BPT, MPT)</span>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px", marginLeft: "auto", color: "var(--teal-deep)" }}>
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </a>
+
+          <a
+            href="/#contact"
+            className="btn btn-coral mobile-action-btn"
+            onClick={() => setMobileOpen(false)}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ width: "18px", height: "18px" }}>
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            Book Appointment
+          </a>
+
+          <a
+            href="https://wa.me/916364589646"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-whatsapp mobile-action-btn"
+            onClick={() => setMobileOpen(false)}
+          >
+            <IconWhatsapp /> Chat with Us
+          </a>
+
+          <div className="mobile-nav-footer">
+            <a href="tel:+916364589646" className="mobile-phone-link" onClick={() => setMobileOpen(false)}>
+              <IconPhone />
+              <span>Call: +91 63645 89646</span>
+            </a>
+          </div>
         </div>
       </div>
     </header>
@@ -1929,38 +2009,135 @@ html{scroll-behavior:smooth;}
 /* ===== HEADER ===== */
 .mw-root header{
   position:sticky;top:0;z-index:100;
-  background:rgba(250,248,244,.85);backdrop-filter:blur(10px);
-  border-bottom:1px solid transparent;
+  background:rgba(250,248,244,.90);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(10,60,66,.07);
   transition:box-shadow .3s ease, border-color .3s ease, background .3s ease;
 }
-.mw-root header.is-scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(10,60,66,.06);background:rgba(250,248,244,.96);}
-.mw-root .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;width:100%;}
-.mw-root .logo{font-family:var(--ff-display);font-weight:800;font-size:1.4rem;color:var(--teal-darker);display:flex;align-items:center;gap:8px;}
-.mw-root .logo span{color:var(--coral);}
-.mw-root .logo-mark{width:34px;height:34px;border-radius:9px;background:var(--teal-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.mw-root .logo-mark svg{width:18px;height:18px;}
-.mw-root nav.main-nav{display:flex;gap:32px;align-items:center;}
-.mw-root nav.main-nav a{font-weight:500;font-size:.95rem;color:var(--ink);position:relative;padding:6px 0;transition:color .2s;}
-.mw-root nav.main-nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--coral);transition:width .25s ease;}
-.mw-root nav.main-nav a:hover{color:var(--teal-deep);}
-.mw-root nav.main-nav a:hover::after{width:100%;}
-.mw-root .nav-right{display:flex;align-items:center;gap:18px;}
-.mw-root .nav-right .btn{box-shadow:none;}
+.mw-root header.is-scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(10,60,66,.08);background:rgba(250,248,244,.98);}
+.mw-root .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 40px;width:100%;}
+.mw-root .header-logo-img{height:56px;border-radius:8px;object-fit:contain;transition:height .2s ease;}
+
+/* Desktop right actions */
+.mw-root .desktop-nav-right{display:flex;align-items:center;gap:14px;}
+.mw-root .desktop-nav-right .btn{box-shadow:none;}
 .mw-root .nav-phone{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;color:var(--teal-darker);}
 .mw-root .nav-phone svg{width:16px;height:16px;}
-.mw-root .menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
-.mw-root .menu-toggle span{width:24px;height:2px;background:var(--teal-darker);transition:transform .25s ease, opacity .25s ease;}
-.mw-root .menu-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.mw-root .menu-toggle.is-open span:nth-child(2){opacity:0;}
-.mw-root .menu-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mw-root .mobile-nav{
-  display:flex;flex-direction:column;gap:4px;max-height:0;overflow:hidden;
-  background:var(--cream);border-bottom:1px solid var(--line);
-  transition:max-height .35s ease, padding .35s ease;padding:0 24px;
+
+/* Mobile Menu Icon Button (Single sleek button on right corner) */
+.mw-root .mobile-menu-btn{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:rgba(10,60,66,.08);
+  border:1.5px solid rgba(10,60,66,.14);
+  cursor:pointer;
+  padding:0;
+  transition:all .25s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 2px 8px rgba(10,60,66,.06);
 }
-.mw-root .mobile-nav.is-open{max-height:420px;padding:16px 24px 22px;}
-.mw-root .mobile-nav a{padding:10px 0;font-weight:500;border-bottom:1px solid var(--line);}
-.mw-root .mobile-nav .btn{margin-top:12px;}
+.mw-root .mobile-menu-btn:hover{background:rgba(10,60,66,.14);}
+.mw-root .mobile-menu-btn.is-active{background:var(--teal-deep);border-color:var(--teal-deep);box-shadow:0 4px 14px rgba(10,60,66,.25);}
+.mw-root .mobile-menu-btn .bar{
+  width:20px;
+  height:2.5px;
+  background:var(--teal-darker);
+  border-radius:2px;
+  transition:transform .25s cubic-bezier(.4,0,.2,1), opacity .2s ease, background .25s ease;
+}
+.mw-root .mobile-menu-btn.is-active .bar{background:#fff;}
+.mw-root .mobile-menu-btn.is-active .bar:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.mw-root .mobile-menu-btn.is-active .bar:nth-child(2){opacity:0;transform:scaleX(0);}
+.mw-root .mobile-menu-btn.is-active .bar:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+/* Mobile Dropdown Panel */
+.mw-root .mobile-nav-panel{
+  display:none;
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  background:rgba(255,255,255,.98);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+  transition:max-height .35s cubic-bezier(.4,0,.2,1), opacity .25s ease;
+}
+.mw-root .mobile-nav-panel.is-open{
+  max-height:480px;
+  opacity:1;
+  border-top:1px solid rgba(10,60,66,.07);
+  box-shadow:0 20px 40px rgba(10,60,66,.14);
+}
+.mw-root .mobile-nav-inner{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:18px 20px 22px;
+}
+.mw-root .mobile-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 16px;
+  border-radius:14px;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+.mw-root .profile-item{
+  border:1.5px solid var(--teal-deep);
+  color:var(--teal-darker);
+}
+.mw-root .profile-item:active{
+  background:var(--teal-tint) !important;
+}
+.mw-root .item-icon-wrap{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:var(--teal-deep);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.mw-root .item-text{display:flex;flex-direction:column;text-align:left;}
+.mw-root .item-text .title{font-weight:700;font-size:.95rem;color:var(--teal-darker);line-height:1.2;}
+.mw-root .item-text .subtitle{font-size:.78rem;color:var(--ink-light);margin-top:2px;}
+.mw-root .mobile-action-btn{
+  width:100%;
+  padding:14px 18px;
+  border-radius:12px;
+  font-size:1rem;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-decoration:none;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+.mw-root .mobile-nav-footer{
+  margin-top:4px;
+  padding-top:10px;
+  border-top:1px dashed rgba(10,60,66,.12);
+}
+.mw-root .mobile-phone-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px;
+  border-radius:10px;
+  background:rgba(10,60,66,.05);
+  color:var(--teal-darker);
+  font-weight:600;
+  font-size:.9rem;
+  text-decoration:none;
+}
 
 /* ===== HERO ===== */
 .mw-root .hero{
@@ -2386,16 +2563,27 @@ html{scroll-behavior:smooth;}
   .mw-root .info-bar-grid{justify-content:flex-start;}
   .mw-root .info-divider{display:none;}
 }
+@media (max-width:860px){
+  .mw-root .desktop-nav-right{display:none !important;}
+  .mw-root .mobile-menu-btn{display:flex !important;}
+  .mw-root .mobile-nav-panel{display:block !important;}
+  .mw-root .nav-wrap{padding:12px 20px;}
+  .mw-root .header-logo-img{height:46px;}
+}
 @media (max-width:760px){
   .mw-root nav.main-nav{display:none;}
-  .mw-root .nav-phone span.txt{display:none;}
-  .mw-root .menu-toggle{display:flex;}
   .mw-root section{padding:60px 0;}
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
   .mw-root .footer-grid{grid-template-columns:1fr;}
   .mw-root .therapy-banner .overlay-text p{display:none;}
   .mw-root .form-row{grid-template-columns:1fr;}
   .mw-root .program-copy{padding:36px 28px;}
+}
+@media (max-width:480px){
+  .mw-root .nav-wrap{padding:10px 14px;}
+  .mw-root .header-logo-img{height:40px;}
+  .mw-root .mobile-menu-btn{width:40px;height:40px;border-radius:10px;}
+  .mw-root .mobile-nav-inner{padding:14px 14px 18px;}
 }
 
 /* ===== SERVICE MODAL ===== */
