@@ -1102,19 +1102,34 @@ export function BookingFilter() {
     <div className="ap-booking-filter">
       {/* Location */}
       <div className="ap-bf-field">
-        <label>Location</label>
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "15px", height: "15px", color: "var(--teal-deep)", flexShrink: 0 }}>
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Location
+        </label>
         <div style={{ position: "relative" }}>
           <select value={location} onChange={e => setLocation(e.target.value)} className="ap-bf-input">
             <option value="">Select Area</option>
             {SERVICE_AREAS.map(s => <option key={s.area} value={s.area}>{s.area}</option>)}
           </select>
-          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--ink-soft)" }}>▼</div>
+          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--teal-deep)" }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px" }}>
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
         </div>
       </div>
 
       {/* Injury */}
       <div className="ap-bf-field">
-        <label>Condition</label>
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "15px", height: "15px", color: "var(--teal-deep)", flexShrink: 0 }}>
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          Condition
+        </label>
         <div style={{ position: "relative" }}>
           <select value={injury} onChange={e => setInjury(e.target.value)} className="ap-bf-input">
             <option value="">Select Condition</option>
@@ -1124,26 +1139,68 @@ export function BookingFilter() {
               </optgroup>
             ))}
           </select>
-          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--ink-soft)" }}>▼</div>
+          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--teal-deep)" }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px" }}>
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
         </div>
       </div>
 
       {/* Date */}
       <div className="ap-bf-field">
-        <label>Preferred Date</label>
-        <input
-          type="date"
-          min={today}
-          value={date}
-          onChange={e => setDate(e.target.value)}
-          className="ap-bf-input"
-          style={{ padding: "13px 16px" }}
-        />
+        <label>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "15px", height: "15px", color: "var(--teal-deep)", flexShrink: 0 }}>
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Preferred Date
+        </label>
+        <div style={{ position: "relative" }}>
+          <input
+            type="date"
+            min={today}
+            value={date}
+            onChange={e => setDate(e.target.value)}
+            className="ap-bf-input ap-bf-date-input"
+            onClick={(e) => {
+              if (e.target && e.target.showPicker) {
+                try { e.target.showPicker(); } catch (_) {}
+              }
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              right: "14px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              pointerEvents: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "var(--teal-deep)"
+            }}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "18px", height: "18px" }}>
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Button */}
-      <div>
+      <div className="ap-bf-btn-wrap">
         <button onClick={handleBook} className="ap-bf-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "18px", height: "18px", marginRight: "6px" }}>
+            <polyline points="9 11 12 14 22 4" />
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+          </svg>
           Book Now
         </button>
       </div>
@@ -1901,38 +1958,94 @@ const STYLES = `
 
 /* ── Booking Filter ── */
 .ap-booking-filter {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #ffffff;
+  border: 1.5px solid rgba(10, 60, 66, 0.12);
   border-radius: 24px;
-  padding: 24px 32px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  padding: 22px 28px;
+  box-shadow: 0 20px 50px rgba(4, 28, 31, 0.22);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr auto;
-  gap: 24px;
+  gap: 20px;
   align-items: end;
   width: 100%;
   position: relative;
   z-index: 2;
 }
-.ap-bf-field label { display: block; font-size: 0.85rem; font-family: var(--ff-display); font-weight: 700; color: var(--teal-darker); margin-bottom: 8px; }
+.ap-bf-field label { 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  font-size: 0.88rem; 
+  font-family: var(--ff-display); 
+  font-weight: 700; 
+  color: var(--teal-darker); 
+  margin-bottom: 8px; 
+}
 .ap-bf-input {
-  width: 100%; padding: 14px 40px 14px 16px; border-radius: 12px; border: 1px solid rgba(10,60,66,0.15);
-  background: var(--white); box-shadow: 0 2px 8px rgba(10,60,66,0.04) inset;
-  font-family: var(--ff-display); font-size: 0.95rem; color: var(--ink); outline: none; cursor: pointer;
-  appearance: none; box-sizing: border-box;
+  width: 100%; 
+  padding: 13px 38px 13px 14px; 
+  border-radius: 12px; 
+  border: 1.5px solid rgba(10,60,66,0.18);
+  background: #f8fbfa; 
+  font-family: var(--ff-display); 
+  font-size: 0.95rem; 
+  color: var(--ink); 
+  outline: none; 
+  cursor: pointer;
+  box-sizing: border-box;
+  height: 50px;
+  transition: all 0.2s ease;
+}
+.ap-bf-input:hover {
+  border-color: var(--teal-deep);
+  background: #ffffff;
+}
+.ap-bf-input:focus {
+  border-color: var(--teal-deep);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(10,92,99,0.15);
+}
+.ap-bf-date-input {
+  color-scheme: light;
+  cursor: pointer;
+  padding-right: 42px !important;
+}
+.ap-bf-date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .ap-bf-btn {
   width: 100%;
-  background: var(--coral); color: var(--white); font-family: var(--ff-display); font-weight: 700;
-  padding: 15px 36px; border-radius: 12px; border: none; cursor: pointer;
-  font-size: 1.05rem; box-shadow: 0 6px 20px rgba(255,107,77,0.3);
-  transition: transform 0.2s, box-shadow 0.2s; height: 48px;
+  background: var(--coral); 
+  color: #ffffff; 
+  font-family: var(--ff-display); 
+  font-weight: 700;
+  padding: 13px 30px; 
+  border-radius: 12px; 
+  border: none; 
+  cursor: pointer;
+  font-size: 1.05rem; 
+  box-shadow: 0 6px 20px rgba(255,107,77,0.35);
+  transition: transform 0.2s, box-shadow 0.2s; 
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.ap-bf-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,107,77,0.4); }
+.ap-bf-btn:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 24px rgba(255,107,77,0.45); 
+}
 
 @media (max-width: 900px) {
-  .ap-booking-filter { grid-template-columns: 1fr 1fr; }
+  .ap-booking-filter { grid-template-columns: 1fr 1fr; gap: 16px; }
 }
 @media (max-width: 600px) {
   .ap-booking-filter { grid-template-columns: 1fr; }
@@ -2570,8 +2683,55 @@ html{scroll-behavior:smooth;}
   .mw-root .nav-wrap{padding:12px 20px;}
   .mw-root .header-logo-img{height:46px;}
 }
-@media (max-width:760px){
+@media (max-width:768px){
   .mw-root nav.main-nav{display:none;}
+  .mw-root .hero {
+    height: auto !important;
+    min-height: 100vh;
+    padding: 100px 16px 50px;
+    justify-content: flex-start;
+  }
+  .mw-root .hero-center {
+    padding: 0;
+    max-width: 100%;
+  }
+  .mw-root .hero-badge-row {
+    margin-bottom: 14px;
+    gap: 6px;
+  }
+  .mw-root .hero-badge {
+    font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+  .mw-root .hero-headline {
+    font-size: 2.1rem;
+    line-height: 1.18;
+    margin-bottom: 12px;
+  }
+  .mw-root .hero-sub {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    max-width: 480px;
+  }
+  .mw-root .hero-scroll-cue {
+    display: none;
+  }
+  .ap-booking-filter { 
+    grid-template-columns: 1fr !important; 
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
+    gap: 14px !important;
+    background: #ffffff !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25) !important;
+  }
+  .ap-bf-btn-wrap {
+    margin-top: 4px;
+  }
+  .ap-bf-btn {
+    height: 52px !important;
+    font-size: 1.05rem !important;
+  }
   .mw-root section{padding:60px 0;}
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
   .mw-root .footer-grid{grid-template-columns:1fr;}
@@ -2584,6 +2744,12 @@ html{scroll-behavior:smooth;}
   .mw-root .header-logo-img{height:40px;}
   .mw-root .mobile-menu-btn{width:40px;height:40px;border-radius:10px;}
   .mw-root .mobile-nav-inner{padding:14px 14px 18px;}
+  .mw-root .hero {
+    padding: 85px 12px 40px;
+  }
+  .mw-root .hero-headline {
+    font-size: 1.85rem;
+  }
 }
 
 /* ===== SERVICE MODAL ===== */
