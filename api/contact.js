@@ -8,8 +8,8 @@ export default async function handler(req, res) {
 
   const { name, phone, email, service, message } = req.body || {};
 
-  if (!name || !phone) {
-    return res.status(400).json({ error: 'Name and phone are required fields.' });
+  if (!name || !phone || !service) {
+    return res.status(400).json({ error: 'Name, phone number, and service are mandatory fields.' });
   }
 
   const smtpUser = process.env.SMTP_USER || 'infohudadi@gmail.com';

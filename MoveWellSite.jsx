@@ -1826,9 +1826,20 @@ function ContactSection() {
 
   const validate = () => {
     const errs = {};
-    if (!form.name.trim()) errs.name = "Please enter your name";
-    if (!form.phone.trim()) errs.phone = "Please enter a phone number";
-    if (!form.email.trim() || !/^\S+@\S+\.\S+$/.test(form.email)) errs.email = "Please enter a valid email";
+    if (!form.name.trim()) {
+      errs.name = "Full name is required *";
+    }
+    if (!form.phone.trim()) {
+      errs.phone = "Phone number is required *";
+    } else if (form.phone.trim().replace(/\D/g, "").length < 10) {
+      errs.phone = "Please enter a valid 10-digit number";
+    }
+    if (!form.service || !form.service.trim()) {
+      errs.service = "Please select a service *";
+    }
+    if (form.email && form.email.trim() && !/^\S+@\S+\.\S+$/.test(form.email.trim())) {
+      errs.email = "Please enter a valid email address";
+    }
     return errs;
   };
 
@@ -1901,10 +1912,11 @@ function ContactSection() {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Enter Name"
+                    placeholder="Full Name *"
                     value={form.name}
                     onChange={handleChange}
                     className={errors.name ? "has-error" : ""}
+                    required
                   />
                   {errors.name && <span className="field-error">{errors.name}</span>}
                 </div>
@@ -1912,44 +1924,52 @@ function ContactSection() {
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder="Phone Number *"
                     value={form.phone}
                     onChange={handleChange}
                     className={errors.phone ? "has-error" : ""}
+                    required
                   />
                   {errors.phone && <span className="field-error">{errors.phone}</span>}
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-field">
+                  <select
+                    name="service"
+                    value={form.service}
+                    onChange={handleChange}
+                    className={errors.service ? "has-error" : ""}
+                    required
+                  >
+                    <option value="">Select Service *</option>
+                    {SERVICE_OPTIONS.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                  {errors.service && <span className="field-error">{errors.service}</span>}
+                </div>
+                <div className="form-field">
                   <input
                     type="email"
                     name="email"
-                    placeholder="Enter Email"
+                    placeholder="Email Address (Optional)"
                     value={form.email}
                     onChange={handleChange}
                     className={errors.email ? "has-error" : ""}
                   />
                   {errors.email && <span className="field-error">{errors.email}</span>}
                 </div>
-                <div className="form-field">
-                  <select name="service" value={form.service} onChange={handleChange}>
-                    <option value="">Select Service</option>
-                    {SERVICE_OPTIONS.map((s) => (
-                      <option key={s} value={s}>{s}</option>
-                    ))}
-                  </select>
-                </div>
               </div>
               <textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="Your Message / Booking Details"
                 rows={5}
                 value={form.message}
                 onChange={handleChange}
               />
               <button type="submit" className="btn btn-coral" disabled={status === "submitting"}>
-                {status === "submitting" ? "Sending…" : "Submit"}
+                {status === "submitting" ? "Submitting Booking…" : "Confirm Appointment Request"}
               </button>
             </form>
           )}
