@@ -1894,6 +1894,15 @@ function CtaBanner() {
 /* --------------------------------- FOOTER ------------------------------------- */
 
 function Footer() {
+  const [openSections, setOpenSections] = useState({});
+
+  const toggleSection = (key) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
   return (
     <footer>
       <div className="container">
@@ -1914,17 +1923,27 @@ function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4>Company</h4>
-            <ul>
+          <div className={`footer-col ${openSections["company"] ? "is-open" : ""}`}>
+            <h4 onClick={() => toggleSection("company")} className="footer-col-title">
+              <span>Company</span>
+              <svg className="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </h4>
+            <ul className="footer-col-links">
               <li><a href="/about">Doctor's Profile</a></li>
               <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>
 
-          <div>
-            <h4>Areas We Cover</h4>
-            <ul>
+          <div className={`footer-col ${openSections["areas"] ? "is-open" : ""}`}>
+            <h4 onClick={() => toggleSection("areas")} className="footer-col-title">
+              <span>Areas We Cover</span>
+              <svg className="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </h4>
+            <ul className="footer-col-links">
               <li><a href="#contact">Kengeri</a></li>
               <li><a href="#contact">Nagarabhavi</a></li>
               <li><a href="#contact">Vijayanagar</a></li>
@@ -1932,9 +1951,14 @@ function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4>Services</h4>
-            <ul>
+          <div className={`footer-col ${openSections["services"] ? "is-open" : ""}`}>
+            <h4 onClick={() => toggleSection("services")} className="footer-col-title">
+              <span>Services</span>
+              <svg className="footer-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </h4>
+            <ul className="footer-col-links">
               <li><a href="#services">Neurological Rehab</a></li>
               <li><a href="#services">Senior Mobility Care</a></li>
               <li><a href="#services">Post-Surgical Recovery</a></li>
@@ -2675,6 +2699,8 @@ html{scroll-behavior:smooth;}
 .mw-root .footer-social a:hover{background:var(--coral);}
 .mw-root .footer-social svg{width:16px;height:16px;}
 .mw-root footer h4{color:#fff;font-family:var(--ff-display);font-size:1rem;margin-bottom:20px;}
+.mw-root .footer-chevron{display:none;}
+.mw-root .footer-col-links{display:flex;flex-direction:column;}
 .mw-root footer ul li{margin-bottom:12px;}
 .mw-root footer ul li a{font-size:.9rem;color:#9FC2BE;transition:color .2s;}
 .mw-root footer ul li a:hover{color:var(--coral);}
@@ -2901,7 +2927,71 @@ html{scroll-behavior:smooth;}
     box-shadow:0 8px 24px rgba(255,107,77,.35) !important;
   }
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
-  .mw-root .footer-grid{grid-template-columns:1fr;}
+  .mw-root .footer-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:14px !important;
+    padding-bottom:30px !important;
+  }
+  .mw-root .footer-col{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:14px;
+    overflow:hidden;
+    transition:all .25s ease;
+  }
+  .mw-root .footer-col.is-open{
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.18);
+  }
+  .mw-root .footer-col-title{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    padding:15px 18px !important;
+    margin:0 !important;
+    cursor:pointer !important;
+    font-size:1rem !important;
+    color:#fff !important;
+    user-select:none !important;
+    width:100% !important;
+  }
+  .mw-root .footer-chevron{
+    display:block !important;
+    width:16px !important;
+    height:16px !important;
+    color:var(--coral) !important;
+    transition:transform .3s cubic-bezier(.4,0,.2,1) !important;
+  }
+  .mw-root .footer-col.is-open .footer-chevron{
+    transform:rotate(180deg) !important;
+  }
+  .mw-root .footer-col-links{
+    max-height:0 !important;
+    overflow:hidden !important;
+    opacity:0 !important;
+    transition:max-height .35s cubic-bezier(.4,0,.2,1), opacity .25s ease, padding .3s ease !important;
+    padding:0 18px !important;
+    margin:0 !important;
+  }
+  .mw-root .footer-col.is-open .footer-col-links{
+    max-height:280px !important;
+    opacity:1 !important;
+    padding:4px 18px 16px !important;
+  }
+  .mw-root .footer-col-links li{
+    margin:0 !important;
+    padding:8px 0 !important;
+    border-bottom:1px solid rgba(255,255,255,.06) !important;
+  }
+  .mw-root .footer-col-links li:last-child{
+    border-bottom:none !important;
+  }
+  .mw-root .footer-col-links li a{
+    font-size:.92rem !important;
+    color:#B9D3D0 !important;
+    display:block !important;
+  }
   .mw-root .therapy-banner .overlay-text p{display:none;}
   .mw-root .form-row{grid-template-columns:1fr;}
 }
