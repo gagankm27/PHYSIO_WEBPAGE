@@ -2732,6 +2732,51 @@ html{scroll-behavior:smooth;}
     height: 52px !important;
     font-size: 1.05rem !important;
   }
+  .mw-root .info-bar {
+    padding: 24px 16px !important;
+  }
+  .mw-root .hero-trust {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    white-space: normal !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  .mw-root .hero-trust-item {
+    padding: 16px 10px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 14px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .mw-root .ht-num {
+    font-size: 1.6rem !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 4px !important;
+    line-height: 1.1 !important;
+  }
+  .mw-root .ht-lbl {
+    font-size: 0.8rem !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-transform: none !important;
+    letter-spacing: 0.01em !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+  .mw-root .ht-sep {
+    display: none !important;
+  }
   .mw-root section{padding:60px 0;}
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
   .mw-root .footer-grid{grid-template-columns:1fr;}
