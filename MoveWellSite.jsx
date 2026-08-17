@@ -203,6 +203,7 @@ const SPECIALTY_PROGRAMS = [
   {
     label: "PROGRAMME · FOR ACTIVE INDIVIDUALS",
     title: "Sports & Fitness Rehab",
+    shortTitle: "Sports Rehab",
     tagline: "Recover. Perform. Excel.",
     desc: "A focused programme for athletes, runners and gym-goers dealing with sports injuries or overuse pain. Includes movement analysis, sport-specific strengthening, manual therapy and a return-to-sport plan.",
     tags: ["Assessment", "Strengthening", "Return to Sport"],
@@ -212,6 +213,7 @@ const SPECIALTY_PROGRAMS = [
   {
     label: "PROGRAMME · FOR DESK WORKERS",
     title: "Desk Warrior Programme",
+    shortTitle: "Desk Warrior",
     tagline: "Sit Smart. Move Often.",
     desc: "Built for professionals who sit for long hours. We assess your posture and workstation, deliver targeted mobility exercises and teach you simple daily habits to eliminate neck, shoulder and back pain.",
     tags: ["Posture Correction", "Ergonomics", "Mobility"],
@@ -221,6 +223,7 @@ const SPECIALTY_PROGRAMS = [
   {
     label: "PROGRAMME · FOR SENIORS",
     title: "Senior Wellness Programme",
+    shortTitle: "Senior Care",
     tagline: "Steady. Strong. Independent.",
     desc: "Gentle, evidence-based home sessions designed for older adults — focusing on improving balance, reducing fall risk, building functional strength and maintaining independence in daily activities.",
     tags: ["Balance Training", "Fall Prevention", "Strength"],
@@ -1454,7 +1457,8 @@ function SpecialtyPrograms() {
               className={`program-tab ${i === active ? "is-active" : ""}`}
               onClick={() => setActive(i)}
             >
-              {p.title}
+              <span className="tab-text-desktop">{p.title}</span>
+              <span className="tab-text-mobile">{p.shortTitle || p.title}</span>
               {i === active && (
                 <span className="tab-progress-bar" style={{ width: `${progress}%` }} />
               )}
@@ -2485,6 +2489,8 @@ html{scroll-behavior:smooth;}
 
 /* ===== SPECIALTY PROGRAMS ===== */
 .mw-root .programs{background:var(--teal-tint-2);}
+.mw-root .tab-text-desktop{display:inline;}
+.mw-root .tab-text-mobile{display:none;}
 .mw-root .program-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
 .mw-root .program-tab{
   padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;
@@ -2777,12 +2783,62 @@ html{scroll-behavior:smooth;}
   .mw-root .ht-sep {
     display: none !important;
   }
+  .mw-root .tab-text-desktop{display:none !important;}
+  .mw-root .tab-text-mobile{display:inline !important;}
+  .mw-root .program-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    margin-bottom: 18px !important;
+    width: 100% !important;
+  }
+  .mw-root .program-tab {
+    padding: 10px 4px !important;
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+  }
+  .mw-root .program-card {
+    grid-template-columns: 1fr !important;
+    border-radius: 18px !important;
+  }
+  .mw-root .program-copy {
+    padding: 20px 18px 22px !important;
+    gap: 12px !important;
+  }
+  .mw-root .program-copy .program-label,
+  .mw-root .program-copy p,
+  .mw-root .program-copy .program-tags {
+    display: none !important;
+  }
+  .mw-root .program-copy h3 {
+    font-size: 1.25rem !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+  }
+  .mw-root .program-copy .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 18px !important;
+    font-size: 0.95rem !important;
+  }
+  .mw-root .program-photo {
+    min-height: 180px !important;
+    max-height: 200px !important;
+    order: -1 !important;
+  }
   .mw-root section{padding:60px 0;}
   .mw-root .service-grid,.mw-root .pricing-grid{grid-template-columns:1fr;}
   .mw-root .footer-grid{grid-template-columns:1fr;}
   .mw-root .therapy-banner .overlay-text p{display:none;}
   .mw-root .form-row{grid-template-columns:1fr;}
-  .mw-root .program-copy{padding:36px 28px;}
 }
 @media (max-width:480px){
   .mw-root .nav-wrap{padding:10px 14px;}
