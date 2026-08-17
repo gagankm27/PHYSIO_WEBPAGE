@@ -361,7 +361,11 @@ const ABOUT_STYLES = `
     .ap-cta-banner { text-align: center; justify-content: center; }
     .ap-spec-grid { grid-template-columns: repeat(2, 1fr); padding: 0 20px; gap: 16px; }
   }
+  @media (max-width: 768px) {
+    .ap-competencies-section { display: none !important; }
+  }
   @media (max-width: 600px) {
+    .ap-competencies-section { display: none !important; }
     .ap-gallery { grid-template-columns: 1fr; padding: 0 16px; }
     .ap-gallery-item:first-child { grid-column: span 1; aspect-ratio: 4/3; }
     .ap-cta-banner { padding: 40px 20px; }
@@ -387,36 +391,6 @@ const ABOUT_STYLES = `
     .ap-spec-desc {
       font-size: 0.78rem;
       line-height: 1.45;
-    }
-    .ap-skills-wrap {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 8px !important;
-      width: 100% !important;
-    }
-    .ap-skill-chip {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-      padding: 10px 6px !important;
-      border-radius: 12px !important;
-      font-size: 0.74rem !important;
-      font-weight: 600 !important;
-      line-height: 1.25 !important;
-      gap: 5px !important;
-      min-height: 64px !important;
-      box-sizing: border-box !important;
-    }
-    .ap-skill-chip .ck {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .ap-skill-chip .ck svg {
-      width: 12px !important;
-      height: 12px !important;
     }
   }
 `;
@@ -509,7 +483,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── CORE SKILLS ── */}
-      <section className="ap-section ap-section-alt">
+      <section className="ap-section ap-section-alt ap-competencies-section">
         <div className="container">
           <div className="ap-section-head">
             <span className="eyebrow">Core Competencies</span>
@@ -558,7 +532,7 @@ export default function AboutPage() {
               Book a home visit with Dr. Sushil and receive expert physiotherapy care from the comfort of your home.
             </p>
           </div>
-          
+
           <BookingFilter />
         </div>
       </div>
