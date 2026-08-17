@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "https://esm.sh/react@18.3.1";
 import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
 import MoveWellSite from "./MoveWellSite.jsx";
 import AboutPage from "./AboutPage.jsx";
+import NotFoundPage from "./NotFoundPage.jsx";
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -42,10 +43,15 @@ function App() {
     };
   }, []);
 
-  if (path === '/about') {
+  const normalizedPath = (path || '/').replace(/\/$/, '') || '/';
+
+  if (normalizedPath === '/about') {
     return <AboutPage />;
   }
-  return <MoveWellSite />;
+  if (normalizedPath === '/' || normalizedPath === '/index.html') {
+    return <MoveWellSite />;
+  }
+  return <NotFoundPage />;
 }
 
 createRoot(document.getElementById("root")).render(<App />);
