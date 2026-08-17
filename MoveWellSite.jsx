@@ -2964,9 +2964,19 @@ html{scroll-behavior:smooth;}
     gap: 12px !important;
   }
   .mw-root .program-copy .program-label,
-  .mw-root .program-copy p,
-  .mw-root .program-copy .program-tags {
+  .mw-root .program-copy p {
     display: none !important;
+  }
+  .mw-root .program-tags {
+    display: flex !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    margin: 2px 0 4px !important;
+  }
+  .mw-root .pill-program {
+    font-size: 0.72rem !important;
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
   }
   .mw-root .program-copy h3 {
     font-size: 1.25rem !important;
