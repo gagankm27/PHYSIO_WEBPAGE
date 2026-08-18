@@ -15,7 +15,10 @@ function App() {
       const a = e.target.closest('a');
       if (a && a.href && a.href.startsWith(window.location.origin)) {
         const url = new URL(a.href);
-        if (url.pathname !== window.location.pathname) {
+        const currentClean = window.location.pathname.replace(/\/$/, '') || '/';
+        const targetClean = url.pathname.replace(/\/$/, '') || '/';
+
+        if (targetClean !== currentClean) {
           e.preventDefault();
           window.history.pushState({}, '', url.pathname + url.search + url.hash);
           setPath(url.pathname);
@@ -25,8 +28,11 @@ function App() {
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }, 100);
           } else {
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'instant' });
           }
+        } else if (targetClean === '/' && (!url.hash || url.hash === '#home' || url.hash === '#')) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         } else if (url.hash) {
           e.preventDefault();
           window.history.pushState({}, '', url.pathname + url.search + url.hash);

@@ -162,9 +162,6 @@ export default function NotFoundPage() {
 
       <main className="nf-page">
         <div className="nf-card">
-          <span className="eyebrow" style={{ color: "var(--coral)", marginBottom: "4px" }}>
-            404 Error
-          </span>
           <div className="nf-code">404</div>
           <h1>Page Not Found</h1>
           <p>

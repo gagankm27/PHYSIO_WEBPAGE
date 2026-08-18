@@ -16,6 +16,9 @@ const NAV_LINKS = [
   { href: "/about", label: "Doctor's Profile" },
 ];
 
+export const WHATSAPP_LINK = "https://wa.me/916364589646?text=" + encodeURIComponent("Hi, I’m reaching out regarding your physiotherapy services. I’d like to know more about the treatments you offer and how I can get started. Could you please share some details? Thank you.");
+
+
 const SERVICES = [
   {
     icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 0 0 1 1h3m10-11l2 2m-2-2v10a1 1 0 0 1-1 1h-3m-6 0a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1m-6 0h6",
@@ -437,29 +440,10 @@ function Header() {
   return (
     <header className={scrolled ? "is-scrolled" : ""}>
       <div className="nav-wrap">
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          {currentPath !== "/" && (
-            <a
-              href="/"
-              className="btn btn-sm btn-outline-dark back-btn"
-              style={{
-                display: "flex", alignItems: "center", gap: "5px",
-                padding: "6px 10px", border: "1px solid rgba(0,0,0,0.12)",
-                background: "rgba(255,255,255,0.85)", backdropFilter: "blur(4px)",
-                color: "var(--teal-darker)", fontWeight: "600", fontSize: "0.82rem"
-              }}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "14px", height: "14px" }}>
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              Back
-            </a>
-          )}
-          {/* Logo */}
-          <a href="/" className="logo">
-            <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" className="header-logo-img" style={{ borderRadius: "8px" }} />
-          </a>
-        </div>
+        {/* Logo */}
+        <a href="/" className="logo">
+          <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" className="header-logo-img" style={{ borderRadius: "8px" }} />
+        </a>
 
         {/* Desktop actions */}
         <div className="nav-right desktop-nav-right">
@@ -498,7 +482,7 @@ function Header() {
           >
             Book Appointment
           </a>
-          <a href="https://wa.me/916364589646" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
             <IconWhatsapp /> Chat with Us
           </a>
         </div>
@@ -571,7 +555,7 @@ function Header() {
           </a>
 
           <a
-            href="https://wa.me/916364589646"
+            href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-whatsapp mobile-action-btn"
@@ -818,7 +802,7 @@ function ServiceModal({ service, onClose }) {
             <div className="svc-modal-cta">
               <p>Ready to start your recovery journey?</p>
               <a href="/#contact" className="btn btn-coral" onClick={onClose}>Book a Home Visit</a>
-              <a href={`https://wa.me/916364589646`} target="_blank" rel="noreferrer" className="btn btn-whatsapp">Chat on WhatsApp</a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-whatsapp">Chat on WhatsApp</a>
             </div>
 
           </div>
@@ -1208,7 +1192,7 @@ export function BookingFilter() {
             className="ap-bf-input ap-bf-date-input"
             onClick={(e) => {
               if (e.target && e.target.showPicker) {
-                try { e.target.showPicker(); } catch (_) {}
+                try { e.target.showPicker(); } catch (_) { }
               }
             }}
           />
@@ -1379,7 +1363,7 @@ function PricingModal({ plan, onClose }) {
             <div className="svc-modal-cta">
               <p>Ready to book the <strong style={{ color: "#9FD8FF" }}>{plan.title.includes("reimagined") ? "Hybrid Physio" : plan.title}</strong> plan?</p>
               <a href="/#contact" className="btn btn-coral" onClick={onClose}>Book Now — {plan.price}{plan.per}</a>
-              <a href="https://wa.me/916364589646" target="_blank" rel="noreferrer" className="btn btn-whatsapp">Chat on WhatsApp</a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-whatsapp">Chat on WhatsApp</a>
             </div>
 
           </div>
@@ -2024,7 +2008,7 @@ function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#home" className="logo">
+            <a href="/" className="logo" title="Back to Home">
               <img src="./Assets/LOGO_01.png" alt="Hudadi Logo" style={{ height: "60px", background: "var(--teal-tint-2)", padding: "8px 24px", borderRadius: "12px", boxSizing: "content-box" }} />
             </a>
             <p>Expert physiotherapy care to relieve pain, restore mobility and improve overall wellbeing — with treatment plans built around you.</p>
@@ -2035,7 +2019,7 @@ function Footer() {
               <a href="#" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" /></svg>
               </a>
-              <a href="https://wa.me/916364589646" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><IconWhatsapp /></a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><IconWhatsapp /></a>
             </div>
           </div>
 
@@ -2114,7 +2098,7 @@ function Fabs() {
       <a className="fab fab-secondary" aria-label="Call us" href="tel:+916364589646">
         <IconPhone />
       </a>
-      <a className="fab fab-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer" href="https://wa.me/916364589646">
+      <a className="fab fab-whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noreferrer" href={WHATSAPP_LINK}>
         <IconWhatsapp />
       </a>
     </div>
@@ -2128,11 +2112,13 @@ const STYLES = `
 
 /* ── Booking Filter ── */
 .ap-booking-filter {
-  background: #ffffff;
-  border: 1.5px solid rgba(10, 60, 66, 0.12);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
   border-radius: 24px;
   padding: 22px 28px;
-  box-shadow: 0 20px 50px rgba(4, 28, 31, 0.22);
+  box-shadow: 0 20px 50px rgba(4, 28, 31, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr auto;
   gap: 20px;
@@ -2156,7 +2142,9 @@ const STYLES = `
   padding: 13px 38px 13px 14px; 
   border-radius: 12px; 
   border: 1.5px solid rgba(10,60,66,0.18);
-  background: #f8fbfa; 
+  background: rgba(255, 255, 255, 0.85); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   font-family: var(--ff-display); 
   font-size: 0.95rem; 
   color: var(--ink); 
@@ -2888,7 +2876,10 @@ html{scroll-behavior:smooth;}
     padding: 20px 16px !important;
     border-radius: 18px !important;
     gap: 14px !important;
-    background: #ffffff !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
     box-shadow: 0 16px 40px rgba(0,0,0,0.25) !important;
   }
   .ap-bf-btn-wrap {

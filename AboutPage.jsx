@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "https://esm.sh/react@18.3.1";
-import { Header, Footer, STYLES, SERVICE_AREAS, SPECIALIZATIONS, BookingFilter } from "./MoveWellSite.jsx";
+import { Header, Footer, STYLES, SERVICE_AREAS, SPECIALIZATIONS, BookingFilter, WHATSAPP_LINK } from "./MoveWellSite.jsx";
+
 
 /* ─── DATA ──────────────────────────────────────────────────────────────── */
 const SKILLS = [
@@ -35,7 +36,7 @@ const IconCheck = () => (
 /* ─── EXTRA STYLES ───────────────────────────────────────────────────────── */
 const ABOUT_STYLES = `
   .ap-hero {
-    padding: 120px 0 80px;
+    padding: 100px 0 80px;
     background: linear-gradient(135deg, var(--teal-tint-2) 0%, var(--white) 60%);
     position: relative;
     overflow: hidden;
@@ -457,7 +458,7 @@ export default function AboutPage() {
               {/* CTAs */}
               <div className="ap-cta-row">
                 <a href="/#contact" className="btn btn-coral">Book a Consultation</a>
-                <a href="https://wa.me/916364589646" className="btn btn-outline" target="_blank" rel="noreferrer">
+                <a href={WHATSAPP_LINK} className="btn btn-outline" target="_blank" rel="noreferrer">
                   Chat on WhatsApp
                 </a>
               </div>
