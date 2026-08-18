@@ -1,5 +1,5 @@
 import React, { useEffect } from "https://esm.sh/react@18.3.1";
-import { STYLES } from "./MoveWellSite.jsx";
+import { STYLES } from "./HomePage.jsx";
 
 const NOT_FOUND_STYLES = `
   .nf-navbar {

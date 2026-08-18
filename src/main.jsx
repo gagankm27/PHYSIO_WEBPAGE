@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "https://esm.sh/react@18.3.1";
 import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
-import MoveWellSite from "./MoveWellSite.jsx";
-import AboutPage from "./AboutPage.jsx";
-import NotFoundPage from "./NotFoundPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -55,7 +55,7 @@ function App() {
     return <AboutPage />;
   }
   if (normalizedPath === '/' || normalizedPath === '/index.html') {
-    return <MoveWellSite />;
+    return <HomePage />;
   }
   return <NotFoundPage />;
 }

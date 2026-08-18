@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "https://esm.sh/react@18.3.1";
-import { Header, Footer, STYLES, SERVICE_AREAS, SPECIALIZATIONS, BookingFilter, WHATSAPP_LINK } from "./MoveWellSite.jsx";
+import { Header, Footer, STYLES, SERVICE_AREAS, SPECIALIZATIONS, BookingFilter, WHATSAPP_LINK } from "./HomePage.jsx";
 
 
 /* ─── DATA ──────────────────────────────────────────────────────────────── */

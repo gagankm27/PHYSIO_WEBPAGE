@@ -1846,11 +1846,39 @@ function ContactSection() {
       return;
     }
     setStatus("submitting");
+
+    // Build a nicely formatted WhatsApp message with all booking details
+    const waLines = [
+      "📋 *New Appointment Request*",
+      "━━━━━━━━━━━━━━━━━━━━━━",
+      `👤 *Name:* ${form.name.trim()}`,
+      `📞 *Phone:* ${form.phone.trim()}`,
+      form.email.trim() ? `📧 *Email:* ${form.email.trim()}` : null,
+      `🩺 *Service:* ${form.service}`,
+      form.message.trim() ? `📝 *Details:*\n${form.message.trim()}` : null,
+      "━━━━━━━━━━━━━━━━━━━━━━",
+      "Please confirm my appointment slot. Thank you!",
+    ].filter(Boolean).join("\n");
+    const waUrl = "https://wa.me/916364589646?text=" + encodeURIComponent(waLines);
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "363d5ac8-8f25-4160-a10b-666863d66e43",
+          subject: `New Appointment Booking: ${form.name.trim()} (${form.service})`,
+          from_name: "Hudadi Physiotherapy Website",
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim() || "Not provided",
+          service: form.service,
+          message: form.message.trim() || "No additional message",
+        }),
       });
       if (res.ok) {
         setStatus("success");
