@@ -94,8 +94,8 @@ PHYSIOTHERAPHY_WEBPAGE/
 |       +-- IMAGE_10.jpg        # Specialty: Senior Wellness Programme
 |       +-- IMAGE_11.jpg        # Care delivery section image
 |       +-- IMAGE_12.jpg        # Testimonials section background
-|       +-- IMAGE_13.jpeg       # Specialty: Desk Warrior Programme
 |       +-- IMAGE_14.jpeg       # Specialty: Sports & Fitness Rehab
+|       +-- IMAGE_16.jpg        # Specialty: Desk Warrior Programme
 |       +-- 2.png               # Reserved
 |       +-- 3.png               # Reserved
 |       +-- About/
@@ -242,7 +242,7 @@ PAGE: Home Page  (Route: /)
 
     5. Specialty Programmes
        - Sports & Fitness Rehab (IMAGE_14.jpeg)
-       - Desk Warrior Programme (IMAGE_13.jpeg)
+       - Desk Warrior Programme (IMAGE_16.jpg)
        - Senior Wellness Programme (IMAGE_10.jpg)
 
     6. Process / Treatment Methods
@@ -339,10 +339,18 @@ Footer (exported from HomePage.jsx)
     - Accordion nav on mobile: Company, Areas We Cover, Services
 
 BookingFilter (exported from HomePage.jsx)
-  State   : location, injury, date
+  State   : location, isCustom, injury, isCustomInjury, date
   Features:
-    - Location dropdown: populated from SERVICE_AREAS array
-    - Condition dropdown: populated from CONDITIONS_WE_TREAT (grouped optgroups)
+    - Location field: Clean dropdown showing all preset areas + a 'Custom' option. Selecting 'Custom' seamlessly transforms that exact same box into a writeable text input in-place with a quick reset button (✕).
+    - Condition dropdown: Ordered strictly as:
+        1. Neurological Physiotherapy (neuro)
+        2. Rehabilitation & Post-operative Physiotherapy (rehab)
+        3. Orthopaedic Physiotherapy (ortho)
+        4. Geriatric Physiotherapy / Senior Care (senior)
+        5. Sports Physiotherapy & Injuries (sportsinjury)
+        6. Cardiorespiratory & Cardiology Physiotherapy (cardiology)
+        7. Pain Management, Pediatric, OBG / Women’s Health
+        + 'Custom' option to type any custom symptom/condition directly in-place with a reset button (✕).
     - Date picker (min: today)
     - Book Appointment button behaviour:
         * If on / : fires movewell:book_appointment event, scrolls to #contact
@@ -556,8 +564,9 @@ Form Fields:
   Message       : textarea, optional (auto-filled by BookingFilter)
 
 Delivery Channels on Submit:
-  1. WhatsApp   : Directly opens chat with Dr. Sushil with full formatted details.
-  2. Email Inbox: Automatically delivers to infohudadi@gmail.com via Web3Forms.
+  1. WhatsApp   : Silently sends automated booking alert directly to Dr. Sushil's WhatsApp.
+  2. Doctor Mail: Notification sent to infohudadi@gmail.com with one-tap Call/WhatsApp links.
+  3. Patient Mail: Branded confirmation email sent to patient's inbox with booking summary, preparation tips, and direct WhatsApp contact button.
 
 Booking Filter Auto-Fill Flow:
   User fills Location + Condition + Date in hero -> clicks "Book Appointment"
@@ -591,8 +600,8 @@ Image Reference:
   IMAGE_10.jpg          -> Specialty: Senior Wellness Programme
   IMAGE_11.jpg          -> About section / care delivery image
   IMAGE_12.jpg          -> Testimonials section background
-  IMAGE_13.jpeg         -> Specialty: Desk Warrior Programme
   IMAGE_14.jpeg         -> Specialty: Sports & Fitness Rehab
+  IMAGE_16.jpg          -> Specialty: Desk Warrior Programme
 
   About/DR_SUSHIL.jpg   -> Doctor's portrait (Doctor's Profile page)
   About/About_01.jpeg   -> Clinical gallery: Spinal Care session

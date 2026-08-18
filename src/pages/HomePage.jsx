@@ -18,6 +18,9 @@ const NAV_LINKS = [
 
 export const WHATSAPP_LINK = "https://wa.me/916364589646?text=" + encodeURIComponent("Hi, I’m reaching out regarding your physiotherapy services. I’d like to know more about the treatments you offer and how I can get started. Could you please share some details? Thank you.");
 
+// Doctor's automated WhatsApp Alert API Key (CallMeBot)
+export const CALLMEBOT_API_KEY = ""; // Paste the doctor's CallMeBot API Key here
+
 
 const SERVICES = [
   {
@@ -221,7 +224,7 @@ const SPECIALTY_PROGRAMS = [
     desc: "Built for professionals who sit for long hours. We assess your posture and workstation, deliver targeted mobility exercises and teach you simple daily habits to eliminate neck, shoulder and back pain.",
     tags: ["Posture Correction", "Ergonomics", "Mobility"],
     cta: "Explore Desk Warrior",
-    img: "./Assets/IMAGE_13.jpeg",
+    img: "./Assets/IMAGE_07.jpg",
   },
   {
     label: "PROGRAMME · FOR SENIORS",
@@ -890,64 +893,6 @@ export const SPECIALIZATIONS = [
 
 export const CONDITIONS_WE_TREAT = [
   {
-    category: "Cardiorespiratory Physiotherapy",
-    emoji: "❤️",
-    conditions: [
-      "Airway Clearance",
-      "Asthma",
-      "Breathing Exercises",
-      "Bronchitis",
-      "COPD",
-      "Cardiac Rehabilitation",
-      "Exercise & Endurance Training",
-      "ICU / Critical Care Physiotherapy",
-      "Pneumonia",
-      "Post-CABG Rehabilitation",
-      "Post-COVID Respiratory Rehabilitation",
-      "Post-MI Rehabilitation",
-      "Post-operative Chest Physiotherapy",
-      "Pulmonary Rehabilitation"
-    ]
-  },
-  {
-    category: "Disability & Rehabilitation Physiotherapy",
-    emoji: "♿",
-    conditions: [
-      "Activities of Daily Living (ADL) Training",
-      "Amputee Rehabilitation",
-      "Assistive Device Training",
-      "Balance & Mobility Training",
-      "Contracture Prevention",
-      "Functional Independence Training",
-      "Gait Training",
-      "Neurological Disability Rehabilitation",
-      "Physical Disability Rehabilitation",
-      "Postural Correction",
-      "Prosthetic & Orthotic Training",
-      "Spinal Cord Injury Rehabilitation",
-      "Stroke Rehabilitation",
-      "Wheelchair Training"
-    ]
-  },
-  {
-    category: "Geriatric Physiotherapy",
-    emoji: "🩺",
-    conditions: [
-      "Age-related Muscle Weakness",
-      "Fall Prevention",
-      "Falls & Balance Problems",
-      "Gait Disorders",
-      "General Deconditioning",
-      "Joint Stiffness",
-      "Mobility & Functional Training",
-      "Osteoarthritis",
-      "Osteoporosis",
-      "Parkinson’s Rehabilitation",
-      "Post-fracture Rehabilitation",
-      "Stroke Rehabilitation"
-    ]
-  },
-  {
     category: "Neurological Physiotherapy",
     emoji: "🧠",
     conditions: [
@@ -969,22 +914,35 @@ export const CONDITIONS_WE_TREAT = [
     ]
   },
   {
-    category: "OBG / Women’s Health Physiotherapy",
-    emoji: "🤰",
+    category: "Rehabilitation & Post-operative Physiotherapy",
+    emoji: "🏥",
     conditions: [
-      "Antenatal Physiotherapy",
-      "C-section Rehabilitation",
-      "Diastasis Recti",
-      "Normal Delivery Recovery",
-      "Pelvic Floor Dysfunction",
-      "Pelvic Floor Muscle Training",
-      "Pelvic Girdle Pain",
-      "Postnatal Physiotherapy",
-      "Postpartum Rehabilitation",
-      "Postural & Core Rehabilitation",
-      "Pre- and Postnatal Exercise Programs",
-      "Pregnancy-related Back Pain",
-      "Urinary Incontinence"
+      "Abdominal Surgery Rehabilitation",
+      "ACL Reconstruction Rehabilitation",
+      "Activities of Daily Living (ADL) Training",
+      "Amputee Rehabilitation",
+      "Assistive Device Training",
+      "Balance & Mobility Training",
+      "Cancer Surgery Rehabilitation",
+      "Contracture Prevention",
+      "Fracture Rehabilitation",
+      "Functional Independence Training",
+      "Gait Training",
+      "Joint Replacement Rehabilitation",
+      "Neurological Disability Rehabilitation",
+      "Physical Disability Rehabilitation",
+      "Post-operative Fracture Rehabilitation",
+      "Post-operative Mobility & Gait Training",
+      "Post-operative Orthopaedic Rehabilitation",
+      "Postural Correction",
+      "Prosthetic & Orthotic Training",
+      "Rotator Cuff Surgery Rehabilitation",
+      "Spinal Cord Injury Rehabilitation",
+      "Spinal Surgery Rehabilitation",
+      "Stroke Rehabilitation",
+      "THR Rehabilitation",
+      "TKR Rehabilitation",
+      "Wheelchair Training"
     ]
   },
   {
@@ -1012,6 +970,68 @@ export const CONDITIONS_WE_TREAT = [
       "Tennis Elbow",
       "Total Hip Replacement (THR)",
       "Total Knee Replacement (TKR)"
+    ]
+  },
+  {
+    category: "Geriatric Physiotherapy (Senior Care)",
+    emoji: "🩺",
+    conditions: [
+      "Age-related Muscle Weakness",
+      "Fall Prevention",
+      "Falls & Balance Problems",
+      "Gait Disorders",
+      "General Deconditioning",
+      "Joint Stiffness",
+      "Mobility & Functional Training",
+      "Osteoarthritis",
+      "Osteoporosis",
+      "Parkinson’s Rehabilitation",
+      "Post-fracture Rehabilitation",
+      "Stroke Rehabilitation"
+    ]
+  },
+  {
+    category: "Sports Physiotherapy & Injuries",
+    emoji: "🏃",
+    conditions: [
+      "Achilles Tendinopathy",
+      "ACL / PCL Injuries",
+      "Ankle Sprains",
+      "Calf Muscle Injuries",
+      "Groin Strain",
+      "Hamstring Strain",
+      "MCL / LCL Injuries",
+      "Meniscus Injuries",
+      "Muscle Cramps",
+      "Overuse Injuries",
+      "Quadriceps Strain",
+      "Return-to-Sport Rehabilitation",
+      "Rotator Cuff Injuries",
+      "Shin Splints",
+      "Shoulder Dislocation",
+      "Sports Injury Prevention & Performance Rehabilitation",
+      "Sports-related Fractures",
+      "Tennis Elbow"
+    ]
+  },
+  {
+    category: "Cardiorespiratory & Cardiology Physiotherapy",
+    emoji: "❤️",
+    conditions: [
+      "Airway Clearance",
+      "Asthma",
+      "Breathing Exercises",
+      "Bronchitis",
+      "COPD",
+      "Cardiac Rehabilitation",
+      "Exercise & Endurance Training",
+      "ICU / Critical Care Physiotherapy",
+      "Pneumonia",
+      "Post-CABG Rehabilitation",
+      "Post-COVID Respiratory Rehabilitation",
+      "Post-MI Rehabilitation",
+      "Post-operative Chest Physiotherapy",
+      "Pulmonary Rehabilitation"
     ]
   },
   {
@@ -1052,43 +1072,22 @@ export const CONDITIONS_WE_TREAT = [
     ]
   },
   {
-    category: "Post-operative Rehabilitation",
-    emoji: "🏥",
+    category: "OBG / Women’s Health Physiotherapy",
+    emoji: "🤰",
     conditions: [
-      "Abdominal Surgery Rehabilitation",
-      "ACL Reconstruction Rehabilitation",
-      "Cancer Surgery Rehabilitation",
-      "Fracture Rehabilitation",
-      "Joint Replacement Rehabilitation",
-      "Post-operative Mobility & Gait Training",
-      "Rotator Cuff Surgery Rehabilitation",
-      "Spinal Surgery Rehabilitation",
-      "THR Rehabilitation",
-      "TKR Rehabilitation"
-    ]
-  },
-  {
-    category: "Sports Physiotherapy",
-    emoji: "🏃",
-    conditions: [
-      "Achilles Tendinopathy",
-      "ACL / PCL Injuries",
-      "Ankle Sprains",
-      "Calf Muscle Injuries",
-      "Groin Strain",
-      "Hamstring Strain",
-      "MCL / LCL Injuries",
-      "Meniscus Injuries",
-      "Muscle Cramps",
-      "Overuse Injuries",
-      "Quadriceps Strain",
-      "Return-to-Sport Rehabilitation",
-      "Rotator Cuff Injuries",
-      "Shin Splints",
-      "Shoulder Dislocation",
-      "Sports Injury Prevention & Performance Rehabilitation",
-      "Sports-related Fractures",
-      "Tennis Elbow"
+      "Antenatal Physiotherapy",
+      "C-section Rehabilitation",
+      "Diastasis Recti",
+      "Normal Delivery Recovery",
+      "Pelvic Floor Dysfunction",
+      "Pelvic Floor Muscle Training",
+      "Pelvic Girdle Pain",
+      "Postnatal Physiotherapy",
+      "Postpartum Rehabilitation",
+      "Postural & Core Rehabilitation",
+      "Pre- and Postnatal Exercise Programs",
+      "Pregnancy-related Back Pain",
+      "Urinary Incontinence"
     ]
   }
 ];
@@ -1096,15 +1095,25 @@ export const CONDITIONS_WE_TREAT = [
 /* -------------------------------- SHARED COMPONENTS --------------------------- */
 export function BookingFilter() {
   const [location, setLocation] = useState("");
+  const [isCustom, setIsCustom] = useState(false);
   const [injury, setInjury] = useState("");
+  const [isCustomInjury, setIsCustomInjury] = useState(false);
   const [date, setDate] = useState("");
 
   const today = new Date().toISOString().split('T')[0];
 
   const handleBook = () => {
+    const finalLocation = isCustom
+      ? (location.trim() || "Custom Area")
+      : location;
+
+    const finalInjury = isCustomInjury
+      ? (injury.trim() || "Custom Condition")
+      : injury;
+
     const bookingData = {
-      location: location || "",
-      injury: injury || "",
+      location: finalLocation || "",
+      injury: finalInjury || "",
       date: date || "",
     };
 
@@ -1114,8 +1123,8 @@ export function BookingFilter() {
     } else {
       // Coming from another page like /about, pass in URL params
       const params = new URLSearchParams();
-      if (location) params.append("location", location);
-      if (injury) params.append("injury", injury);
+      if (finalLocation) params.append("location", finalLocation);
+      if (finalInjury) params.append("injury", finalInjury);
       if (date) params.append("date", date);
 
       const queryString = params.toString();
@@ -1135,19 +1144,82 @@ export function BookingFilter() {
           Location
         </label>
         <div style={{ position: "relative" }}>
-          <select value={location} onChange={e => setLocation(e.target.value)} className="ap-bf-input">
-            <option value="">Select Area</option>
-            {SERVICE_AREAS.map(s => <option key={s.area} value={s.area}>{s.area}</option>)}
-          </select>
-          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--teal-deep)" }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px" }}>
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </div>
+          {isCustom ? (
+            <>
+              <input
+                type="text"
+                placeholder="Type your area name..."
+                value={location}
+                onChange={e => setLocation(e.target.value)}
+                className="ap-bf-input"
+                autoFocus
+                style={{
+                  paddingRight: "40px",
+                  borderColor: "var(--teal-deep)",
+                  background: "#FFFFFF",
+                  cursor: "text"
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setIsCustom(false);
+                  setLocation("");
+                }}
+                title="Back to area list"
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(10, 92, 99, 0.1)",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "26px",
+                  height: "26px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  color: "var(--teal-deep)",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                }}
+              >
+                ✕
+              </button>
+            </>
+          ) : (
+            <>
+              <select
+                value={location}
+                onChange={e => {
+                  if (e.target.value === "CUSTOM") {
+                    setIsCustom(true);
+                    setLocation("");
+                  } else {
+                    setLocation(e.target.value);
+                  }
+                }}
+                className="ap-bf-input"
+              >
+                <option value="">Select Area</option>
+                {SERVICE_AREAS.map(s => (
+                  <option key={s.area} value={s.area}>{s.area}</option>
+                ))}
+                <option value="CUSTOM">Custom</option>
+              </select>
+              <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--teal-deep)" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px" }}>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
-      {/* Injury */}
+      {/* Condition (Ordered: Neuro, Rehab, Ortho, Senior, Sports, Cardiology + Custom) */}
       <div className="ap-bf-field">
         <label>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: "15px", height: "15px", color: "var(--teal-deep)", flexShrink: 0 }}>
@@ -1156,19 +1228,80 @@ export function BookingFilter() {
           Condition
         </label>
         <div style={{ position: "relative" }}>
-          <select value={injury} onChange={e => setInjury(e.target.value)} className="ap-bf-input">
-            <option value="">Select Condition</option>
-            {CONDITIONS_WE_TREAT.map(cat => (
-              <optgroup key={cat.category} label={`${cat.emoji} ${cat.category}`}>
-                {cat.conditions.map(c => <option key={c} value={c}>{c}</option>)}
-              </optgroup>
-            ))}
-          </select>
-          <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--teal-deep)" }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px" }}>
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </div>
+          {isCustomInjury ? (
+            <>
+              <input
+                type="text"
+                placeholder="Type your condition / pain..."
+                value={injury}
+                onChange={e => setInjury(e.target.value)}
+                className="ap-bf-input"
+                autoFocus
+                style={{
+                  paddingRight: "40px",
+                  borderColor: "var(--teal-deep)",
+                  background: "#FFFFFF",
+                  cursor: "text"
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  setIsCustomInjury(false);
+                  setInjury("");
+                }}
+                title="Back to condition list"
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "rgba(10, 92, 99, 0.1)",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "26px",
+                  height: "26px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  color: "var(--teal-deep)",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                }}
+              >
+                ✕
+              </button>
+            </>
+          ) : (
+            <>
+              <select
+                value={injury}
+                onChange={e => {
+                  if (e.target.value === "CUSTOM") {
+                    setIsCustomInjury(true);
+                    setInjury("");
+                  } else {
+                    setInjury(e.target.value);
+                  }
+                }}
+                className="ap-bf-input"
+              >
+                <option value="">Select Condition</option>
+                <option value="CUSTOM">Custom</option>
+                {CONDITIONS_WE_TREAT.map(cat => (
+                  <optgroup key={cat.category} label={`${cat.emoji} ${cat.category}`}>
+                    {cat.conditions.map(c => <option key={c} value={c}>{c}</option>)}
+                  </optgroup>
+                ))}
+              </select>
+              <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--teal-deep)" }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px" }}>
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </div>
+            </>
+          )}
         </div>
       </div>
 
@@ -1847,23 +1980,37 @@ function ContactSection() {
     }
     setStatus("submitting");
 
-    // Build a nicely formatted WhatsApp message with all booking details
-    const waLines = [
-      "📋 *New Appointment Request*",
-      "━━━━━━━━━━━━━━━━━━━━━━",
-      `👤 *Name:* ${form.name.trim()}`,
-      `📞 *Phone:* ${form.phone.trim()}`,
-      form.email.trim() ? `📧 *Email:* ${form.email.trim()}` : null,
-      `🩺 *Service:* ${form.service}`,
-      form.message.trim() ? `📝 *Details:*\n${form.message.trim()}` : null,
-      "━━━━━━━━━━━━━━━━━━━━━━",
-      "Please confirm my appointment slot. Thank you!",
-    ].filter(Boolean).join("\n");
-    const waUrl = "https://wa.me/916364589646?text=" + encodeURIComponent(waLines);
-    window.open(waUrl, "_blank", "noopener,noreferrer");
+    // 1. Silently send automated WhatsApp alert directly to Dr. Sushil's WhatsApp
+    if (CALLMEBOT_API_KEY) {
+      const doctorAlert = [
+        "📋 *NEW WEBSITE APPOINTMENT*",
+        "━━━━━━━━━━━━━━━━━━━━━━",
+        `👤 *Patient:* ${form.name.trim()}`,
+        `📞 *Phone:* ${form.phone.trim()}`,
+        form.email.trim() ? `📧 *Email:* ${form.email.trim()}` : null,
+        `🩺 *Service:* ${form.service}`,
+        form.message.trim() ? `📝 *Details:* ${form.message.trim()}` : null,
+        "━━━━━━━━━━━━━━━━━━━━━━",
+        "Sent automatically from Hudadi Website",
+      ].filter(Boolean).join("\n");
 
+      fetch(
+        `https://api.callmebot.com/whatsapp.php?phone=916364589646&text=${encodeURIComponent(doctorAlert)}&apikey=${CALLMEBOT_API_KEY}`,
+        { mode: "no-cors" }
+      ).catch((e) => console.warn("CallMeBot alert error:", e));
+    }
+
+    // 2. Send emails: Doctor notification + Patient confirmation email via SMTP & Web3Forms backup
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      // Primary: Send Doctor Alert & Patient Confirmation via Gmail SMTP
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      }).catch((err) => console.warn("API contact email warning:", err));
+
+      // Backup: Send via Web3Forms API
+      await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1880,13 +2027,9 @@ function ContactSection() {
           message: form.message.trim() || "No additional message",
         }),
       });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", phone: "", email: "", service: "", message: "" });
-      } else {
-        setStatus("success"); // Graceful fallback
-        setForm({ name: "", phone: "", email: "", service: "", message: "" });
-      }
+
+      setStatus("success");
+      setForm({ name: "", phone: "", email: "", service: "", message: "" });
     } catch (err) {
       console.warn("Contact submission error:", err);
       setStatus("success");
@@ -2181,6 +2324,12 @@ const STYLES = `
   box-sizing: border-box;
   height: 50px;
   transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.ap-bf-input::-ms-expand {
+  display: none;
 }
 .ap-bf-input:hover {
   border-color: var(--teal-deep);
