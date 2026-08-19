@@ -523,7 +523,7 @@ function Header() {
             </div>
             <div className="item-text">
               <span className="title">Doctor's Profile</span>
-              <span className="subtitle">Dr. Sushil Hudadi (BPT, MPT)</span>
+              <span className="subtitle">Dr. Sushil Hudadi (BPT)</span>
             </div>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ width: "16px", height: "16px", marginLeft: "auto", color: "var(--teal-deep)" }}>
               <path d="M9 18l6-6-6-6" />
@@ -1872,8 +1872,25 @@ function Blog() {
 
 function ContactSection() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
+  const [submittedData, setSubmittedData] = useState(null);
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errors, setErrors] = useState({});
+
+  const buildDoctorWhatsAppLink = (data) => {
+    if (!data) return "https://wa.me/916364589646";
+    const msg = [
+      "👋 *New Appointment Request*",
+      "━━━━━━━━━━━━━━━━━━━━━━",
+      `👤 *Patient:* ${data.name}`,
+      `📞 *Phone:* ${data.phone}`,
+      data.email ? `📧 *Email:* ${data.email}` : null,
+      `🩺 *Service:* ${data.service}`,
+      data.message ? `📝 *Notes:* ${data.message}` : null,
+      "━━━━━━━━━━━━━━━━━━━━━━",
+      "Hi Dr. Sushil, I have submitted this booking on your website. Please confirm my appointment slot."
+    ].filter(Boolean).join("\n");
+    return `https://wa.me/916364589646?text=${encodeURIComponent(msg)}`;
+  };
 
   const applyBookingData = (data) => {
     if (!data) return;
@@ -2000,6 +2017,15 @@ function ContactSection() {
       ).catch((e) => console.warn("CallMeBot alert error:", e));
     }
 
+    const currentBooking = {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      service: form.service,
+      message: form.message.trim(),
+    };
+    setSubmittedData(currentBooking);
+
     // 2. Send emails: Doctor notification + Patient confirmation email via SMTP & Web3Forms backup
     try {
       // Primary: Send Doctor Alert & Patient Confirmation via Gmail SMTP
@@ -2066,9 +2092,52 @@ function ContactSection() {
           {status === "success" ? (
             <div className="form-success">
               <div className="form-success-icon"><IconCheck /></div>
-              <h3>Thanks, we got it!</h3>
-              <p>A member of our care team will reach out within one business day.</p>
-              <button className="btn btn-outline" onClick={() => setStatus("idle")}>Send another message</button>
+              <h3>Thanks, we got your request!</h3>
+              <p>Dr. Sushil has been notified and will reach out to you shortly.</p>
+
+              {submittedData && (
+                <div style={{ width: "100%", marginTop: "14px", marginBottom: "6px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <a
+                    href={buildDoctorWhatsAppLink(submittedData)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-whatsapp-direct"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "10px",
+                      backgroundColor: "#25D366",
+                      color: "#FFFFFF",
+                      fontWeight: "700",
+                      fontSize: "14.5px",
+                      padding: "13px 22px",
+                      borderRadius: "12px",
+                      textDecoration: "none",
+                      width: "100%",
+                      maxWidth: "380px",
+                      boxShadow: "0 4px 14px rgba(37, 211, 102, 0.35)",
+                      transition: "all 0.2s ease"
+                    }}
+                  >
+                    <IconWhatsapp /> Also Send Details to Doctor via WhatsApp
+                  </a>
+                  <span style={{ fontSize: "12px", color: "var(--ink-soft)", marginTop: "8px" }}>
+                    ⚡ Instant WhatsApp confirmation directly with Dr. Sushil
+                  </span>
+                </div>
+              )}
+
+              <button
+                className="btn btn-outline"
+                style={{ marginTop: "12px" }}
+                onClick={() => {
+                  setStatus("idle");
+                  setSubmittedData(null);
+                }}
+              >
+                Send another message
+              </button>
             </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit} noValidate>

@@ -106,41 +106,77 @@ const ABOUT_STYLES = `
   .ap-info { display: flex; flex-direction: column; gap: 0; }
   .ap-name {
     font-family: var(--ff-display);
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: clamp(2.2rem, 4.2vw, 3rem);
     font-weight: 800;
     color: var(--teal-darker);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+  .ap-subtitle-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
   }
   .ap-title {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-family: var(--ff-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--teal-deep);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .ap-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 107, 77, 0.12);
     color: var(--coral-dark);
-    margin-bottom: 6px;
-    letter-spacing: 0.02em;
-  }
-  .ap-edu {
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    margin-bottom: 28px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .ap-edu::before {
-    content: "🎓";
-    font-size: 1rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 99px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
   .ap-divider {
-    width: 56px; height: 4px;
+    width: 60px; height: 4px;
     background: linear-gradient(90deg, var(--coral), var(--teal-deep));
     border-radius: 99px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
-  .ap-vision {
-    font-size: 1rem;
-    line-height: 1.78;
-    color: var(--ink-soft);
+  .ap-vision-card {
+    background: #FFFFFF;
+    border: 1.5px solid rgba(10, 92, 99, 0.09);
+    border-radius: 20px;
+    padding: 26px 30px;
     margin-bottom: 36px;
-    max-width: 640px;
+    max-width: 680px;
+    box-shadow: 0 10px 30px rgba(10, 60, 66, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .ap-vision-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--coral), var(--teal-deep));
+  }
+  .ap-vision-text {
+    font-family: var(--ff-body);
+    font-size: 0.965rem;
+    line-height: 1.8;
+    color: #334155;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+  }
+  .ap-vision-text p {
+    margin: 0;
   }
   .ap-stats {
     display: flex; flex-wrap: wrap; gap: 20px;
@@ -430,15 +466,21 @@ export default function AboutPage() {
                 <span className="eyebrow">Meet Your Physiotherapist</span>
               </div>
               <h1 className="ap-name">Dr. Sushil Hudadi</h1>
-              <p className="ap-title">(PT) · Physiotherapist</p>
+              <div className="ap-subtitle-row">
+                <p className="ap-title">Hudadi Physiotherapy & Rehabilitation</p>
+                <span className="ap-badge-pill">BPT Certified</span>
+              </div>
               <div className="ap-divider" />
-              <p className="ap-vision">
-                Focused and compassionate Physiotherapist committed to helping patients manage pain, recover from injuries,
-                and improve their mobility and quality of life. Dynamic and adaptable professional with strong
-                problem-solving and communication skills. Passionate about continuous learning, patient care, and
-                delivering effective physiotherapy solutions. Able to work collaboratively in diverse clinical environments
-                with a positive and patient-focused approach.
-              </p>
+              <div className="ap-vision-card">
+                <div className="ap-vision-text">
+                  <p>
+                    <strong>Hudadi Physiotherapy & Rehabilitation</strong> is a professional healthcare practice committed to providing personalized, evidence-based physiotherapy and rehabilitation services to individuals of all ages. Our primary focus is to help patients manage pain, restore physical function, improve mobility, and regain confidence in their daily activities through structured and patient-centered care.
+                  </p>
+                  <p>
+                    We understand that every individual has unique health needs and recovery goals. Therefore, our treatment approach is tailored to each patient through careful assessment, individualized treatment planning, therapeutic exercises, manual therapy, functional rehabilitation, and ongoing progress monitoring. We focus not only on relieving symptoms but also on addressing the underlying causes of physical discomfort and movement limitations to support long-term recovery.
+                  </p>
+                </div>
+              </div>
 
               {/* Stats */}
               <div className="ap-stats">

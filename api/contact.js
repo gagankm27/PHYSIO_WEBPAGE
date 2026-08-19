@@ -1,5 +1,43 @@
 import nodemailer from 'nodemailer';
 
+// Send Instant Loud Push Notification to Doctor's Device via ntfy
+async function sendNtfyNotification({ name, phone, email, service, message }) {
+  const topic = process.env.NTFY_TOPIC || 'Dr_Sushils_Websites_Appointments';
+  const cleanPhone = phone ? phone.replace(/[^0-9]/g, '') : '';
+
+  const payload = {
+    topic: topic,
+    title: `🚨 New Appointment: ${name} (${service})`,
+    message: `👤 Patient: ${name}\n📞 Phone: ${phone}\n🏥 Service: ${service}\n📧 Email: ${email || 'Not provided'}\n📝 Notes: ${message || 'None'}`,
+    priority: 4, // High priority (rings phone, vibrates, wakes screen)
+    tags: ['stethoscope', 'hospital', 'bell'],
+    actions: [
+      {
+        action: 'view',
+        label: '📞 Call Patient',
+        url: `tel:${phone}`,
+      },
+      {
+        action: 'view',
+        label: '💬 WhatsApp Patient',
+        url: `https://wa.me/${cleanPhone}`,
+      },
+    ],
+  };
+
+  try {
+    await fetch('https://ntfy.sh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.warn('ntfy push notification error (non-fatal):', err);
+  }
+}
+
 export default async function handler(req, res) {
   // Allow only POST requests
   if (req.method !== 'POST') {
@@ -11,6 +49,9 @@ export default async function handler(req, res) {
   if (!name || !phone || !service) {
     return res.status(400).json({ error: 'Name, phone number, and service are mandatory fields.' });
   }
+
+  // Trigger instant push notification to doctor's device
+  await sendNtfyNotification({ name, phone, email, service, message });
 
   const smtpUser = process.env.SMTP_USER || 'infohudadi@gmail.com';
   const smtpPass = process.env.SMTP_PASSWORD || 'orok acbg pwuh ndav';
